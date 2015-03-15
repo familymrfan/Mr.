@@ -20,6 +20,11 @@
 
 @implementation TestObject
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"number:%@, string:%@", self.numberValue, self.stringValue];
+}
+
 @end
 
 @interface MrTests : XCTestCase
@@ -49,6 +54,9 @@
     
     [[DataLibrary saver] save:obj];
     [[DataLibrary saver] remove:obj.class rowId:@3];
+    
+    NSLog(@"query %@", [[DataLibrary querier] query:obj.class]);
+    NSLog(@"query condition %@", [[DataLibrary querier] query:obj.class otherCondition:@"WHERE rowId = 4" withParam:nil]);
 }
 
 @end

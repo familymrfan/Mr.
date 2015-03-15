@@ -12,5 +12,7 @@
 @interface DataQuerier : NSObject
 
 - (void)setDatabase:(FMDatabase *)database;
+- (NSArray *)query:(Class)class;
+- (NSArray *)query:(Class)class otherCondition:(NSString *)condition withParam:(NSArray*)param;
 
 @end
