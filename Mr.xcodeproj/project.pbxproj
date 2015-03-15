@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E31CF3B51AB55252003CDD03 /* DataPathProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = E31CF3B31AB55252003CDD03 /* DataPathProvider.h */; };
+		E31CF3B61AB55252003CDD03 /* DataPathProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E31CF3B41AB55252003CDD03 /* DataPathProvider.m */; };
+		E31CF3BB1AB57922003CDD03 /* Macro.h in Headers */ = {isa = PBXBuildFile; fileRef = E31CF3BA1AB57922003CDD03 /* Macro.h */; };
 		E3466C901AB4505F0071CE9C /* Mr.h in Headers */ = {isa = PBXBuildFile; fileRef = E3466C8F1AB4505F0071CE9C /* Mr.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E3466C961AB4505F0071CE9C /* Mr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3466C8A1AB4505F0071CE9C /* Mr.framework */; };
 		E3466C9D1AB4505F0071CE9C /* MrTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E3466C9C1AB4505F0071CE9C /* MrTests.m */; };
@@ -22,6 +25,14 @@
 		E3466CBC1AB453F80071CE9C /* FMResultSet.h in Headers */ = {isa = PBXBuildFile; fileRef = E3466CB11AB453F80071CE9C /* FMResultSet.h */; };
 		E3466CBD1AB453F80071CE9C /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E3466CB21AB453F80071CE9C /* FMResultSet.m */; };
 		E3466CBF1AB454430071CE9C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E3466CBE1AB454430071CE9C /* libsqlite3.dylib */; };
+		E3466CCF1AB45B900071CE9C /* DataLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = E3466CCD1AB45B900071CE9C /* DataLibrary.h */; };
+		E3466CD01AB45B900071CE9C /* DataLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = E3466CCE1AB45B900071CE9C /* DataLibrary.m */; };
+		E3466CD31AB45BF60071CE9C /* DataSaver.h in Headers */ = {isa = PBXBuildFile; fileRef = E3466CD11AB45BF60071CE9C /* DataSaver.h */; };
+		E3466CD41AB45BF60071CE9C /* DataSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = E3466CD21AB45BF60071CE9C /* DataSaver.m */; };
+		E3466CD81AB493AB0071CE9C /* MrObject.h in Headers */ = {isa = PBXBuildFile; fileRef = E3466CD61AB493AB0071CE9C /* MrObject.h */; };
+		E3466CD91AB493AB0071CE9C /* MrObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E3466CD71AB493AB0071CE9C /* MrObject.m */; };
+		E3466CDC1AB494900071CE9C /* DataQuerier.h in Headers */ = {isa = PBXBuildFile; fileRef = E3466CDA1AB494900071CE9C /* DataQuerier.h */; };
+		E3466CDD1AB494900071CE9C /* DataQuerier.m in Sources */ = {isa = PBXBuildFile; fileRef = E3466CDB1AB494900071CE9C /* DataQuerier.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +46,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E31CF3B31AB55252003CDD03 /* DataPathProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataPathProvider.h; path = data_library/DataPathProvider.h; sourceTree = "<group>"; };
+		E31CF3B41AB55252003CDD03 /* DataPathProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataPathProvider.m; path = data_library/DataPathProvider.m; sourceTree = "<group>"; };
+		E31CF3BA1AB57922003CDD03 /* Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Macro.h; path = util/Macro.h; sourceTree = "<group>"; };
 		E3466C8A1AB4505F0071CE9C /* Mr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3466C8E1AB4505F0071CE9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3466C8F1AB4505F0071CE9C /* Mr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mr.h; sourceTree = "<group>"; };
@@ -53,6 +67,14 @@
 		E3466CB11AB453F80071CE9C /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMResultSet.h; path = third_party/fmdb/src/fmdb/FMResultSet.h; sourceTree = SOURCE_ROOT; };
 		E3466CB21AB453F80071CE9C /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = third_party/fmdb/src/fmdb/FMResultSet.m; sourceTree = SOURCE_ROOT; };
 		E3466CBE1AB454430071CE9C /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		E3466CCD1AB45B900071CE9C /* DataLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataLibrary.h; path = data_library/DataLibrary.h; sourceTree = "<group>"; };
+		E3466CCE1AB45B900071CE9C /* DataLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataLibrary.m; path = data_library/DataLibrary.m; sourceTree = "<group>"; };
+		E3466CD11AB45BF60071CE9C /* DataSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataSaver.h; path = data_library/DataSaver.h; sourceTree = "<group>"; };
+		E3466CD21AB45BF60071CE9C /* DataSaver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataSaver.m; path = data_library/DataSaver.m; sourceTree = "<group>"; };
+		E3466CD61AB493AB0071CE9C /* MrObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MrObject.h; path = data_struct/MrObject.h; sourceTree = "<group>"; };
+		E3466CD71AB493AB0071CE9C /* MrObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MrObject.m; path = data_struct/MrObject.m; sourceTree = "<group>"; };
+		E3466CDA1AB494900071CE9C /* DataQuerier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataQuerier.h; path = data_library/DataQuerier.h; sourceTree = "<group>"; };
+		E3466CDB1AB494900071CE9C /* DataQuerier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataQuerier.m; path = data_library/DataQuerier.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +97,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E31CF3B71AB578B4003CDD03 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				E31CF3BA1AB57922003CDD03 /* Macro.h */,
+			);
+			name = util;
+			sourceTree = "<group>";
+		};
 		E3466C801AB4505F0071CE9C = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +127,9 @@
 		E3466C8C1AB4505F0071CE9C /* Mr */ = {
 			isa = PBXGroup;
 			children = (
+				E31CF3B71AB578B4003CDD03 /* util */,
+				E3466CD51AB493960071CE9C /* data_struct */,
+				E3466CC01AB454CA0071CE9C /* data_library */,
 				E3466CA61AB453AF0071CE9C /* third_party */,
 				E3466C8F1AB4505F0071CE9C /* Mr.h */,
 				E3466C8D1AB4505F0071CE9C /* Supporting Files */,
@@ -155,6 +188,30 @@
 			name = FMDB;
 			sourceTree = "<group>";
 		};
+		E3466CC01AB454CA0071CE9C /* data_library */ = {
+			isa = PBXGroup;
+			children = (
+				E3466CCD1AB45B900071CE9C /* DataLibrary.h */,
+				E3466CCE1AB45B900071CE9C /* DataLibrary.m */,
+				E3466CD11AB45BF60071CE9C /* DataSaver.h */,
+				E3466CD21AB45BF60071CE9C /* DataSaver.m */,
+				E3466CDA1AB494900071CE9C /* DataQuerier.h */,
+				E3466CDB1AB494900071CE9C /* DataQuerier.m */,
+				E31CF3B31AB55252003CDD03 /* DataPathProvider.h */,
+				E31CF3B41AB55252003CDD03 /* DataPathProvider.m */,
+			);
+			name = data_library;
+			sourceTree = "<group>";
+		};
+		E3466CD51AB493960071CE9C /* data_struct */ = {
+			isa = PBXGroup;
+			children = (
+				E3466CD61AB493AB0071CE9C /* MrObject.h */,
+				E3466CD71AB493AB0071CE9C /* MrObject.m */,
+			);
+			name = data_struct;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -164,10 +221,16 @@
 			files = (
 				E3466CB91AB453F80071CE9C /* FMDatabaseQueue.h in Headers */,
 				E3466CBC1AB453F80071CE9C /* FMResultSet.h in Headers */,
+				E31CF3B51AB55252003CDD03 /* DataPathProvider.h in Headers */,
+				E3466CD31AB45BF60071CE9C /* DataSaver.h in Headers */,
+				E3466CCF1AB45B900071CE9C /* DataLibrary.h in Headers */,
 				E3466CB71AB453F80071CE9C /* FMDatabasePool.h in Headers */,
+				E3466CDC1AB494900071CE9C /* DataQuerier.h in Headers */,
 				E3466CB31AB453F80071CE9C /* FMDatabase.h in Headers */,
 				E3466CBB1AB453F80071CE9C /* FMDB.h in Headers */,
+				E31CF3BB1AB57922003CDD03 /* Macro.h in Headers */,
 				E3466C901AB4505F0071CE9C /* Mr.h in Headers */,
+				E3466CD81AB493AB0071CE9C /* MrObject.h in Headers */,
 				E3466CB51AB453F80071CE9C /* FMDatabaseAdditions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -271,8 +334,13 @@
 				E3466CB41AB453F80071CE9C /* FMDatabase.m in Sources */,
 				E3466CBA1AB453F80071CE9C /* FMDatabaseQueue.m in Sources */,
 				E3466CB81AB453F80071CE9C /* FMDatabasePool.m in Sources */,
+				E31CF3B61AB55252003CDD03 /* DataPathProvider.m in Sources */,
+				E3466CD91AB493AB0071CE9C /* MrObject.m in Sources */,
 				E3466CB61AB453F80071CE9C /* FMDatabaseAdditions.m in Sources */,
 				E3466CBD1AB453F80071CE9C /* FMResultSet.m in Sources */,
+				E3466CD41AB45BF60071CE9C /* DataSaver.m in Sources */,
+				E3466CD01AB45B900071CE9C /* DataLibrary.m in Sources */,
+				E3466CDD1AB494900071CE9C /* DataQuerier.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
