@@ -14,5 +14,6 @@
 
 - (void)setDatabase:(FMDatabase *)database;
 - (void)save:(MrObject *)object;
+- (void)remove:(Class)class rowId:(NSNumber *)rowId;
 
 @end
