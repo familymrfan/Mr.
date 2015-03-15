@@ -10,15 +10,10 @@
 
 @interface DataQuerier ()
 
-@property (nonatomic) FMDatabase* dabase;
+@property (nonatomic) FMDatabase* database;
 
 @end
 
 @implementation DataQuerier
-
-- (void)setDatabase:(FMDatabase *)database
-{
-    self.dabase = database;
-}
 
 @end

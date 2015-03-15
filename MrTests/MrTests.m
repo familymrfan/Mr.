@@ -40,8 +40,9 @@
 
 - (void)testExample {
     TestObject* obj = [[TestObject alloc] init];
-    obj.stringValue = @"string";
-    obj.numberValue = @1;
+    obj.rowId = @3;
+    //obj.stringValue = @"string update";
+    obj.numberValue = @100;
     NSLog(@"TestObject keyNames %@", [obj keyNames]);
     NSLog(@"TestObject keyname2Value %@", [obj keyname2Value]);
     NSLog(@"TestObject keyname2Class %@", [obj keyname2Class]);
