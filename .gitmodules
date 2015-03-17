@@ -1,3 +1,6 @@
 [submodule "third_party/fmdb"]
 	path = third_party/fmdb
 	url = https://github.com/ccgus/fmdb
+[submodule "third_party/BlocksKit"]
+	path = third_party/BlocksKit
+	url = https://github.com/zwaldowski/BlocksKit.git
