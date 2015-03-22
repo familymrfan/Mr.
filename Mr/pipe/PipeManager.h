@@ -7,7 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MainPipe.h"
+#import "QueuePipe.h"
+#import "IgnorePipe.h"
+#import "ReplacePipe.h"
 
 @interface PipeManager : NSObject
+
++ (MrWork *)doWork:(WorkBlock)block;
++ (MrWork *)doWorkInMainPipe:(WorkBlock)block;
+
+// 获取main pipe只有一个
++ (MainPipe *)mainPipe;
+
+// 创建
++ (QueuePipe *)createQueuePipe;
++ (IgnorePipe *)createIgnorePipe;
++ (ReplacePipe *)createReplacePipe;
 
 @end

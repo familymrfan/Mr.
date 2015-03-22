@@ -7,7 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MrWork.h"
 
 @interface Pipe : NSObject
+
+- (void)addWork:(MrWork *)work;
+
+- (void)readyWork:(MrWork *)work;
+- (void)flush;
+
+- (NSArray *)getWorks;
+- (void)doWorks;
 
 @end

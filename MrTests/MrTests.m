@@ -10,6 +10,7 @@
 #import <XCTest/XCTest.h>
 #import "DataLibrary.h"
 #import "MrObject.h"
+#import "PipeManager.h"
 
 @interface TestObject : MrObject
 
@@ -57,6 +58,17 @@
     
     NSLog(@"query %@", [[DataLibrary querier] query:obj.class]);
     NSLog(@"query condition %@", [[DataLibrary querier] query:obj.class otherCondition:@"WHERE rowId = 4" withParam:nil]);
+    
+    MrWork* work = [PipeManager doWorkInMainPipe:^(BOOL isCancel) {
+        if (isCancel) {
+            NSLog(@"work has been canceled !");
+        } else {
+            NSLog(@"work in main queue ! thread:%@", [NSThread currentThread]);
+        }
+    }];
+    [work cancel];
+    
+    [[NSRunLoop currentRunLoop] run];
 }
 
 @end

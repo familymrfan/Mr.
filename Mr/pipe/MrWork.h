@@ -23,6 +23,9 @@ typedef void(^WorkBlock)(BOOL isCancel);
 // do work
 - (void)doit;
 
+// 是否正在执行
+- (BOOL)isExecute;
+
 // 让工作不再产生回调
 - (void)cancel;
 - (BOOL)isCancel;

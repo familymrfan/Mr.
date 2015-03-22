@@ -11,16 +11,12 @@
 @interface MrWork ()
 
 @property (nonatomic, assign) BOOL isCancel;
+@property (nonatomic, assign) BOOL isExecute;
 @property (nonatomic, copy) WorkBlock block;
 
 @end
 
 @implementation MrWork
-
-- (void)attachCollectBundle:(CollectBundle *)collect
-{
-    
-}
 
 - (void)attachNotifyBundle:(NotifyBundle *)notify
 {
@@ -30,7 +26,9 @@
 - (void)doit
 {
     if (self.block) {
+        self.isExecute = YES;
         self.block([self isCancel]);
+        self.isExecute = NO;
     }
 }
 

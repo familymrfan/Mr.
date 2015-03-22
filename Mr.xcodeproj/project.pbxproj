@@ -41,6 +41,14 @@
 		E3466CD91AB493AB0071CE9C /* MrObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E3466CD71AB493AB0071CE9C /* MrObject.m */; };
 		E3466CDC1AB494900071CE9C /* DataQuerier.h in Headers */ = {isa = PBXBuildFile; fileRef = E3466CDA1AB494900071CE9C /* DataQuerier.h */; };
 		E3466CDD1AB494900071CE9C /* DataQuerier.m in Sources */ = {isa = PBXBuildFile; fileRef = E3466CDB1AB494900071CE9C /* DataQuerier.m */; };
+		E37D7E981ABF2517006E694F /* MainPipe.h in Headers */ = {isa = PBXBuildFile; fileRef = E37D7E961ABF2517006E694F /* MainPipe.h */; };
+		E37D7E991ABF2517006E694F /* MainPipe.m in Sources */ = {isa = PBXBuildFile; fileRef = E37D7E971ABF2517006E694F /* MainPipe.m */; };
+		E37D7E9C1ABF25BC006E694F /* QueuePipe.h in Headers */ = {isa = PBXBuildFile; fileRef = E37D7E9A1ABF25BC006E694F /* QueuePipe.h */; };
+		E37D7E9D1ABF25BC006E694F /* QueuePipe.m in Sources */ = {isa = PBXBuildFile; fileRef = E37D7E9B1ABF25BC006E694F /* QueuePipe.m */; };
+		E37D7EA01ABF262D006E694F /* IgnorePipe.h in Headers */ = {isa = PBXBuildFile; fileRef = E37D7E9E1ABF262D006E694F /* IgnorePipe.h */; };
+		E37D7EA11ABF262D006E694F /* IgnorePipe.m in Sources */ = {isa = PBXBuildFile; fileRef = E37D7E9F1ABF262D006E694F /* IgnorePipe.m */; };
+		E37D7EA41ABF2656006E694F /* ReplacePipe.h in Headers */ = {isa = PBXBuildFile; fileRef = E37D7EA21ABF2656006E694F /* ReplacePipe.h */; };
+		E37D7EA51ABF2656006E694F /* ReplacePipe.m in Sources */ = {isa = PBXBuildFile; fileRef = E37D7EA31ABF2656006E694F /* ReplacePipe.m */; };
 		E3A430A61AB8771E00F15C60 /* libBlocksKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3A430901AB872DF00F15C60 /* libBlocksKit.a */; };
 		E3A430A81AB877EA00F15C60 /* libBlocksKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3A430901AB872DF00F15C60 /* libBlocksKit.a */; };
 /* End PBXBuildFile section */
@@ -149,6 +157,14 @@
 		E3466CD71AB493AB0071CE9C /* MrObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MrObject.m; path = data_struct/MrObject.m; sourceTree = "<group>"; };
 		E3466CDA1AB494900071CE9C /* DataQuerier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataQuerier.h; path = data_library/DataQuerier.h; sourceTree = "<group>"; };
 		E3466CDB1AB494900071CE9C /* DataQuerier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataQuerier.m; path = data_library/DataQuerier.m; sourceTree = "<group>"; };
+		E37D7E961ABF2517006E694F /* MainPipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPipe.h; sourceTree = "<group>"; };
+		E37D7E971ABF2517006E694F /* MainPipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPipe.m; sourceTree = "<group>"; };
+		E37D7E9A1ABF25BC006E694F /* QueuePipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QueuePipe.h; path = pipe/QueuePipe.h; sourceTree = "<group>"; };
+		E37D7E9B1ABF25BC006E694F /* QueuePipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QueuePipe.m; path = pipe/QueuePipe.m; sourceTree = "<group>"; };
+		E37D7E9E1ABF262D006E694F /* IgnorePipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IgnorePipe.h; sourceTree = "<group>"; };
+		E37D7E9F1ABF262D006E694F /* IgnorePipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IgnorePipe.m; sourceTree = "<group>"; };
+		E37D7EA21ABF2656006E694F /* ReplacePipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReplacePipe.h; path = pipe/ReplacePipe.h; sourceTree = "<group>"; };
+		E37D7EA31ABF2656006E694F /* ReplacePipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReplacePipe.m; path = pipe/ReplacePipe.m; sourceTree = "<group>"; };
 		E3A430861AB872DF00F15C60 /* BlocksKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BlocksKit.xcodeproj; path = third_party/BlocksKit/BlocksKit.xcodeproj; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -177,14 +193,22 @@
 		0B2CECD01ABD4F0100B319D5 /* pipe */ = {
 			isa = PBXGroup;
 			children = (
+				E37D7E9E1ABF262D006E694F /* IgnorePipe.h */,
+				E37D7E9F1ABF262D006E694F /* IgnorePipe.m */,
+				E37D7E961ABF2517006E694F /* MainPipe.h */,
+				E37D7E971ABF2517006E694F /* MainPipe.m */,
 				0B2CECEE1ABF1A3900B319D5 /* MrWork.h */,
 				0B2CECEF1ABF1A3900B319D5 /* MrWork.m */,
 				0B2CECF01ABF1A3900B319D5 /* NotifyBundle.h */,
 				0B2CECF11ABF1A3900B319D5 /* NotifyBundle.m */,
-				0B2CECFC1ABF1E8800B319D5 /* PipeManager.h */,
-				0B2CECFD1ABF1E8800B319D5 /* PipeManager.m */,
 				0B2CED001ABF1FA400B319D5 /* Pipe.h */,
 				0B2CED011ABF1FA400B319D5 /* Pipe.m */,
+				0B2CECFC1ABF1E8800B319D5 /* PipeManager.h */,
+				0B2CECFD1ABF1E8800B319D5 /* PipeManager.m */,
+				E37D7E9A1ABF25BC006E694F /* QueuePipe.h */,
+				E37D7E9B1ABF25BC006E694F /* QueuePipe.m */,
+				E37D7EA21ABF2656006E694F /* ReplacePipe.h */,
+				E37D7EA31ABF2656006E694F /* ReplacePipe.m */,
 			);
 			name = pipe;
 			sourceTree = "<group>";
@@ -330,7 +354,10 @@
 				E3466CBC1AB453F80071CE9C /* FMResultSet.h in Headers */,
 				E31CF3B51AB55252003CDD03 /* DataPathProvider.h in Headers */,
 				E3466CD31AB45BF60071CE9C /* DataSaver.h in Headers */,
+				E37D7EA01ABF262D006E694F /* IgnorePipe.h in Headers */,
+				E37D7EA41ABF2656006E694F /* ReplacePipe.h in Headers */,
 				0B2CED021ABF1FA400B319D5 /* Pipe.h in Headers */,
+				E37D7E9C1ABF25BC006E694F /* QueuePipe.h in Headers */,
 				E3466CCF1AB45B900071CE9C /* DataLibrary.h in Headers */,
 				E3466CB71AB453F80071CE9C /* FMDatabasePool.h in Headers */,
 				0B2CECF61ABF1A3900B319D5 /* NotifyBundle.h in Headers */,
@@ -341,6 +368,7 @@
 				0B2CECF41ABF1A3900B319D5 /* MrWork.h in Headers */,
 				E3466C901AB4505F0071CE9C /* Mr.h in Headers */,
 				0B2CECFE1ABF1E8800B319D5 /* PipeManager.h in Headers */,
+				E37D7E981ABF2517006E694F /* MainPipe.h in Headers */,
 				E3466CD81AB493AB0071CE9C /* MrObject.h in Headers */,
 				E3466CB51AB453F80071CE9C /* FMDatabaseAdditions.h in Headers */,
 			);
@@ -503,8 +531,12 @@
 				E3466CD91AB493AB0071CE9C /* MrObject.m in Sources */,
 				E3466CB61AB453F80071CE9C /* FMDatabaseAdditions.m in Sources */,
 				0B2CECF71ABF1A3900B319D5 /* NotifyBundle.m in Sources */,
+				E37D7EA51ABF2656006E694F /* ReplacePipe.m in Sources */,
+				E37D7EA11ABF262D006E694F /* IgnorePipe.m in Sources */,
 				E3466CBD1AB453F80071CE9C /* FMResultSet.m in Sources */,
+				E37D7E9D1ABF25BC006E694F /* QueuePipe.m in Sources */,
 				E3466CD41AB45BF60071CE9C /* DataSaver.m in Sources */,
+				E37D7E991ABF2517006E694F /* MainPipe.m in Sources */,
 				0B2CECF51ABF1A3900B319D5 /* MrWork.m in Sources */,
 				E3466CD01AB45B900071CE9C /* DataLibrary.m in Sources */,
 				E3466CDD1AB494900071CE9C /* DataQuerier.m in Sources */,
@@ -635,6 +667,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(srcroot)/third_party/BlocksKit",
 				);
 				INFOPLIST_FILE = Mr/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -655,6 +688,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(srcroot)/third_party/BlocksKit",
 				);
 				INFOPLIST_FILE = Mr/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
