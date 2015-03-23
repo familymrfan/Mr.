@@ -7,7 +7,8 @@
 //
 
 #import "QueuePipe.h"
-#import "BlocksKit/BlocksKit.h"
+#import "PipeManager.h"
+
 
 @interface QueuePipe ()
 
@@ -28,13 +29,14 @@
 
 -(void)doWorks
 {
-    [[self getWorks] bk_each:^(MrWork* work) {
-        if (!work.isExecute) {
-            dispatch_async(self.queue, ^{
+    dispatch_async(self.queue, ^{
+        [[self getWorks] bk_each:^(MrWork* work) {
+            if (!work.isExecute && !work.isFinish) {
                 [work doit];
-            });
-        }
-    }];
+                [work finish];
+            }
+        }];
+    });
 }
 
 @end

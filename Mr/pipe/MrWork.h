@@ -28,8 +28,12 @@ typedef void(^WorkBlock)(BOOL isCancel);
 // 是否正在执行
 - (BOOL)isExecute;
 
-// 让工作不再产生回调
+// 让工作不再继续
 - (void)cancel;
 - (BOOL)isCancel;
+
+// 标记工作已完成
+- (void)finish;
+- (BOOL)isFinish;
 
 @end

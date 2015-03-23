@@ -29,9 +29,20 @@
 
 - (void)addWork:(MrWork *)work
 {
+    [self cleanFinishWorks];
     [self.works addObject:work];
     [self doWorks];
-    [self.works removeObject:work];
+}
+
+- (void)cleanFinishWorks
+{
+    NSMutableIndexSet* indexSet = [NSMutableIndexSet indexSet];
+    [self.works enumerateObjectsUsingBlock:^(MrWork* work, NSUInteger idx, BOOL *stop) {
+        if (work.isFinish) {
+            [indexSet addIndex:idx];
+        }
+    }];
+    [self.works removeObjectsAtIndexes:indexSet];
 }
 
 - (void)addWorkBlock:(WorkBlock)block
@@ -53,9 +64,9 @@
 
 - (void)flush
 {
+    [self cleanFinishWorks];
     [self.works addObjectsFromArray:self.readyWorks];
     [self doWorks];
-    [self.works removeObjectsInArray:self.readyWorks];
 }
 
 - (NSArray *)getWorks

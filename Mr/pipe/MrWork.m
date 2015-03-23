@@ -12,6 +12,7 @@
 
 @property (nonatomic, assign) BOOL isCancel;
 @property (nonatomic, assign) BOOL isExecute;
+@property (nonatomic, assign) BOOL isFinish;
 @property (nonatomic, copy) WorkBlock block;
 
 @end
@@ -38,6 +39,7 @@
         self.isExecute = YES;
         self.block([self isCancel]);
         self.isExecute = NO;
+        self.isFinish = YES;
     }
 }
 
@@ -54,6 +56,12 @@
 - (void)cancel
 {
     self.isCancel = YES;
+}
+
+// 标记工作已完成
+- (void)finish;
+{
+    self.isFinish = YES;
 }
 
 @end

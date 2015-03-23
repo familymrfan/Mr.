@@ -15,6 +15,7 @@
 		0B2CECFF1ABF1E8800B319D5 /* PipeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2CECFD1ABF1E8800B319D5 /* PipeManager.m */; };
 		0B2CED021ABF1FA400B319D5 /* Pipe.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B2CED001ABF1FA400B319D5 /* Pipe.h */; };
 		0B2CED031ABF1FA400B319D5 /* Pipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2CED011ABF1FA400B319D5 /* Pipe.m */; };
+		0B2CED131ABFDBF400B319D5 /* PrefixHeader.pch in Headers */ = {isa = PBXBuildFile; fileRef = 0B2CED121ABFDBF400B319D5 /* PrefixHeader.pch */; };
 		E31CF3B51AB55252003CDD03 /* DataPathProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = E31CF3B31AB55252003CDD03 /* DataPathProvider.h */; };
 		E31CF3B61AB55252003CDD03 /* DataPathProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E31CF3B41AB55252003CDD03 /* DataPathProvider.m */; };
 		E31CF3BB1AB57922003CDD03 /* Macro.h in Headers */ = {isa = PBXBuildFile; fileRef = E31CF3BA1AB57922003CDD03 /* Macro.h */; };
@@ -128,6 +129,7 @@
 		0B2CECFD1ABF1E8800B319D5 /* PipeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PipeManager.m; path = pipe/PipeManager.m; sourceTree = "<group>"; };
 		0B2CED001ABF1FA400B319D5 /* Pipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pipe.h; sourceTree = "<group>"; };
 		0B2CED011ABF1FA400B319D5 /* Pipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pipe.m; sourceTree = "<group>"; };
+		0B2CED121ABFDBF400B319D5 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		E31CF3B31AB55252003CDD03 /* DataPathProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataPathProvider.h; path = data_library/DataPathProvider.h; sourceTree = "<group>"; };
 		E31CF3B41AB55252003CDD03 /* DataPathProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataPathProvider.m; path = data_library/DataPathProvider.m; sourceTree = "<group>"; };
 		E31CF3BA1AB57922003CDD03 /* Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Macro.h; path = util/Macro.h; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				E3466C8E1AB4505F0071CE9C /* Info.plist */,
+				0B2CED121ABFDBF400B319D5 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				E3466CB71AB453F80071CE9C /* FMDatabasePool.h in Headers */,
 				0B2CECF61ABF1A3900B319D5 /* NotifyBundle.h in Headers */,
 				E3466CDC1AB494900071CE9C /* DataQuerier.h in Headers */,
+				0B2CED131ABFDBF400B319D5 /* PrefixHeader.pch in Headers */,
 				E3466CB31AB453F80071CE9C /* FMDatabase.h in Headers */,
 				E3466CBB1AB453F80071CE9C /* FMDB.h in Headers */,
 				E31CF3BB1AB57922003CDD03 /* Macro.h in Headers */,
@@ -664,6 +668,9 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Mr/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -685,6 +692,9 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Mr/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -706,6 +716,9 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Mr/PrefixHeader.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -723,6 +736,9 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Mr/PrefixHeader.pch;
 				INFOPLIST_FILE = MrTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

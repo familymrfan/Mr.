@@ -13,13 +13,14 @@
 
 -(void)doWorks
 {
-    [[self getWorks] bk_each:^(MrWork* work) {
-        if (!work.isExecute) {
-            dispatch_async(dispatch_get_main_queue(), ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[self getWorks] bk_each:^(MrWork* work) {
+            if (!work.isExecute && !work.isFinish) {
                 [work doit];
-            });
-        }
-    }];
+                [work finish];
+            }
+        }];
+    });
 }
 
 @end
