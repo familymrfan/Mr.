@@ -12,6 +12,7 @@
 
 @property (nonatomic) NSMutableArray* works;
 @property (nonatomic) NSMutableArray* readyWorks;
+@property (nonatomic) BOOL isReady;
 
 @end
 
@@ -29,9 +30,13 @@
 
 - (void)addWork:(MrWork *)work
 {
-    [self cleanFinishWorks];
-    [self.works addObject:work];
-    [self doWorks];
+    if (!self.isReady) {
+        [self cleanFinishWorks];
+        [self.works addObject:work];
+        [self doWorks];
+    } else {
+        [self readyWork:work];
+    }
 }
 
 - (void)cleanFinishWorks
@@ -51,15 +56,14 @@
     [self addWork:work];
 }
 
+- (void)ready
+{
+    self.isReady = YES;
+}
+
 - (void)readyWork:(MrWork *)work
 {
     [self.readyWorks addObject:work];
-}
-
-- (void)readyWorkBlock:(WorkBlock)block
-{
-    MrWork* work = [[MrWork alloc] initWithBlock:block];
-    [self readyWork:work];
 }
 
 - (void)flush
@@ -67,6 +71,7 @@
     [self cleanFinishWorks];
     [self.works addObjectsFromArray:self.readyWorks];
     [self doWorks];
+    self.isReady = NO;
 }
 
 - (NSArray *)getWorks

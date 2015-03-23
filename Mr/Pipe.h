@@ -14,8 +14,7 @@
 - (void)addWork:(MrWork *)work;
 - (void)addWorkBlock:(WorkBlock)block;
 
-- (void)readyWork:(MrWork *)work;
-- (void)readyWorkBlock:(WorkBlock)block;
+- (void)ready;
 - (void)flush;
 
 - (NSArray *)getWorks;

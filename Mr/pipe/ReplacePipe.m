@@ -27,20 +27,20 @@
 
 -(void)doWorks
 {
-    __block MrWork* replaceWork = [self getWorks].lastObject;
-    [[self getWorks] bk_each:^(MrWork* work) {
-        if (![work isEqual:replaceWork]) {
-            [work cancel];
-            [work finish];
-        } else {
-            dispatch_async(self.queue, ^{
-                if (!work.isExecute && !work.isFinish) {
-                    [work doit];
+    __block MrWork* executeWork = [self getWorks].lastObject;
+    if (!executeWork.isExecute && !executeWork.isFinish) {
+        dispatch_async(self.queue, ^{
+            executeWork = [self getWorks].lastObject;
+            [[self getWorks] bk_each:^(MrWork* work) {
+                if (work != executeWork) {
+                    [work cancel];
                     [work finish];
                 }
-            });
-        }
-    }];
+            }];
+            [executeWork doit];
+            [executeWork finish];
+        });
+    }
 }
 
 @end

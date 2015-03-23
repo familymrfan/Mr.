@@ -80,27 +80,27 @@
         NSLog(@"work2 in queue pipe ! thread:%@", [NSThread currentThread]);
     }];
     
-    [pipe flush];
-    
-    [pipe readyWorkBlock:^(BOOL isCancel) {
-        NSLog(@"work3 in queue pipe ! thread:%@", [NSThread currentThread]);
-    }];
-    
-    [pipe flush];
-    
     IgnorePipe* ignorePipe = [PipeManager createIgnorePipe];
     
-    NSArray* array = @[@1, @2, @3, @4, @5];
-    [array bk_each:^(id obj) {
+    [ignorePipe ready];
+    
+    [ignorePipe addWorkBlock:^(BOOL isCancel) {
+        NSLog(@"work4 in ignore pipe, the first work ! thread:%@", [NSThread currentThread]);
+    }];
+    
+    for (NSInteger i = 0; i < 100; i++) {
         [ignorePipe addWorkBlock:^(BOOL isCancel) {
             NSLog(@"work4 in ignore pipe ! thread:%@", [NSThread currentThread]);
         }];
-    }];
-        
+    }
+    
+    [ignorePipe flush];
+    
     ReplacePipe* replacePipe = [PipeManager createReplacePipe];
     
-    array = @[@1, @2];
-    [array bk_each:^(id obj) {
+    [replacePipe ready];
+    
+    for (NSInteger i = 0; i < 100; i++) {
         [replacePipe addWorkBlock:^(BOOL isCancel) {
             if (isCancel) {
                 NSLog(@"work6 canceled in replace pipe ! thread:%@", [NSThread currentThread]);
@@ -108,7 +108,13 @@
                 NSLog(@"work6 in replace pipe ! thread:%@", [NSThread currentThread]);
             }
         }];
+    }
+    
+    [replacePipe addWorkBlock:^(BOOL isCancel) {
+        NSLog(@"work6 in replace pipe, the end work ! thread:%@", [NSThread currentThread]);
     }];
+    
+    [replacePipe flush];
     
     [[NSRunLoop currentRunLoop] run];
 }

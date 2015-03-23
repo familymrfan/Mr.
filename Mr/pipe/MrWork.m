@@ -35,7 +35,7 @@
 
 - (void)doit
 {
-    if (self.block) {
+    if (self.block && !self.isFinish) {
         self.isExecute = YES;
         self.block([self isCancel]);
         self.isExecute = NO;

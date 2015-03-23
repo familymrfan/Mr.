@@ -29,22 +29,18 @@
 
 -(void)doWorks
 {
-    __block MrWork* executeWork = nil;
-    [[self getWorks] bk_each:^(MrWork* work) {
-        if (!work.isExecute && !work.isFinish) {
-            if (executeWork == nil) {
-                executeWork = work;
-                dispatch_async(self.queue, ^{
-                    [work doit];
+    __block MrWork* executeWork = [self getWorks].firstObject;
+    if (!executeWork.isExecute && !executeWork.isFinish) {
+        dispatch_async(self.queue, ^{
+            [[self getWorks] bk_each:^(MrWork* work) {
+                if (work != executeWork) {
                     [work finish];
-                });
-            } else {
-                [work finish];
-            }
-        } else if (work.isExecute) {
-            executeWork = work;
-        }
-    }];
+                }
+            }];
+            [executeWork doit];
+            [executeWork finish];
+        });
+    }
 }
 
 @end
