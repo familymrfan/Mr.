@@ -18,6 +18,15 @@
 
 @implementation MrWork
 
+- (instancetype)initWithBlock:(WorkBlock)block
+{
+    self = [super init];
+    if (self) {
+        _block = block;
+    }
+    return self;
+}
+
 - (void)attachNotifyBundle:(NotifyBundle *)notify
 {
     

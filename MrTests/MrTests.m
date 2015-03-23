@@ -68,6 +68,26 @@
     }];
     [work cancel];
     
+    [PipeManager doWork:^(BOOL isCancel) {
+        NSLog(@"work in other queue ! thread:%@", [NSThread currentThread]);
+    }];
+    
+    QueuePipe* pipe = [PipeManager createQueuePipe];
+    [pipe addWorkBlock:^(BOOL isCancel) {
+        NSLog(@"work1 in queue pipe ! thread:%@", [NSThread currentThread]);
+    }];
+    [pipe addWorkBlock:^(BOOL isCancel) {
+        NSLog(@"work2 in queue pipe ! thread:%@", [NSThread currentThread]);
+    }];
+    
+    [pipe flush];
+    
+    [pipe readyWorkBlock:^(BOOL isCancel) {
+        NSLog(@"work3 in queue pipe ! thread:%@", [NSThread currentThread]);
+    }];
+    
+    [pipe flush];
+    
     [[NSRunLoop currentRunLoop] run];
 }
 

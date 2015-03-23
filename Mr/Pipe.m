@@ -34,9 +34,21 @@
     [self.works removeObject:work];
 }
 
+- (void)addWorkBlock:(WorkBlock)block
+{
+    MrWork* work = [[MrWork alloc] initWithBlock:block];
+    [self addWork:work];
+}
+
 - (void)readyWork:(MrWork *)work
 {
     [self.readyWorks addObject:work];
+}
+
+- (void)readyWorkBlock:(WorkBlock)block
+{
+    MrWork* work = [[MrWork alloc] initWithBlock:block];
+    [self readyWork:work];
 }
 
 - (void)flush

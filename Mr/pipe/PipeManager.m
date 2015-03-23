@@ -15,7 +15,7 @@
 {
     MrWork* work = [[MrWork alloc] init];
     [work setWorkBlock:block];
-    [[self createIgnorePipe] addWork:work];
+    [[self createQueuePipe] addWork:work];
     return work;
 }
 

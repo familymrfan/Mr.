@@ -12,8 +12,10 @@
 @interface Pipe : NSObject
 
 - (void)addWork:(MrWork *)work;
+- (void)addWorkBlock:(WorkBlock)block;
 
 - (void)readyWork:(MrWork *)work;
+- (void)readyWorkBlock:(WorkBlock)block;
 - (void)flush;
 
 - (NSArray *)getWorks;

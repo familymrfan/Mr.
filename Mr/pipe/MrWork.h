@@ -13,6 +13,8 @@ typedef void(^WorkBlock)(BOOL isCancel);
 
 @interface MrWork : NSObject
 
+- (instancetype)initWithBlock:(WorkBlock)block;
+
 // 添加到通知束当中，当这些工作都完成的时候产生这个通知work
 - (void)attachNotifyBundle:(NotifyBundle *)notify;
 
