@@ -14,8 +14,12 @@
 
 @interface PipeManager : NSObject
 
-+ (MrWork *)doWork:(WorkBlock)block;
-+ (MrWork *)doWorkInMainPipe:(WorkBlock)block;
++ (MrWork *)doSyncWork:(SyncWorkBlock)block;
++ (MrWork *)doSyncWorkInMainPipe:(SyncWorkBlock)block;
+
++ (MrWork *)doAyncWork:(AsyncWorkBlock)block;
++ (MrWork *)doAyncWorkInMainPipe:(AsyncWorkBlock)block;
+
 
 // 获取main pipe只有一个
 + (MainPipe *)mainPipe;

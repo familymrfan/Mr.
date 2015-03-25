@@ -50,20 +50,40 @@
     [self.works removeObjectsAtIndexes:indexSet];
 }
 
-- (void)addWorkBlock:(WorkBlock)block
-{
-    MrWork* work = [[MrWork alloc] initWithBlock:block];
-    [self addWork:work];
-}
-
 - (void)ready
 {
     self.isReady = YES;
 }
 
+
 - (void)readyWork:(MrWork *)work
 {
     [self.readyWorks addObject:work];
+}
+
+- (void)addSyncWorkBlock:(SyncWorkBlock)block
+{
+    MrWork* work = [[MrWork alloc] initWithSyncBlock:block];
+    [self addWork:work];
+}
+
+
+- (void)readySyncWorkBlock:(SyncWorkBlock)block
+{
+    MrWork* work = [[MrWork alloc] initWithSyncBlock:block];
+    [self readyWork:work];
+}
+
+- (void)addAsyncWorkBlock:(AsyncWorkBlock)block
+{
+    MrWork* work = [[MrWork alloc] initWithAsyncBlock:block];
+    [self addWork:work];
+}
+
+- (void)readyAsyncWorkBlock:(AsyncWorkBlock)block
+{
+    MrWork* work = [[MrWork alloc] initWithAsyncBlock:block];
+    [self readyWork:work];
 }
 
 - (void)flush

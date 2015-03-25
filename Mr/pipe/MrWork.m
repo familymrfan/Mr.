@@ -13,17 +13,27 @@
 @property (nonatomic, assign) BOOL isCancel;
 @property (nonatomic, assign) BOOL isExecute;
 @property (nonatomic, assign) BOOL isFinish;
-@property (nonatomic, copy) WorkBlock block;
+@property (nonatomic, copy) SyncWorkBlock syncBlock;
+@property (nonatomic, copy) AsyncWorkBlock asyncBlock;
 
 @end
 
 @implementation MrWork
 
-- (instancetype)initWithBlock:(WorkBlock)block
+- (instancetype)initWithSyncBlock:(SyncWorkBlock)block
 {
     self = [super init];
     if (self) {
-        _block = block;
+        _syncBlock = block;
+    }
+    return self;
+}
+
+- (instancetype)initWithAsyncBlock:(AsyncWorkBlock)block
+{
+    self = [super init];
+    if (self) {
+        _asyncBlock = block;
     }
     return self;
 }
@@ -35,22 +45,40 @@
 
 - (void)doit
 {
-    if (self.block && !self.isFinish) {
+    if (self.syncBlock && !self.isFinish) {
         self.isExecute = YES;
-        self.block([self isCancel]);
+        self.syncBlock([self isCancel]);
         self.isExecute = NO;
         self.isFinish = YES;
+    } else if (self.asyncBlock && !self.isFinish) {
+        self.isExecute = YES;
+        dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+        self.asyncBlock([self isCancel], ^(){
+            [self finish];
+            dispatch_semaphore_signal(semaphore);
+        });
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
     }
 }
 
-- (void)setWorkBlock:(WorkBlock)block
+- (void)setSyncWorkBlock:(SyncWorkBlock)block
 {
-    self.block = block;
+    self.syncBlock = block;
 }
 
-- (WorkBlock)getWorkBlock:(WorkBlock)block
+- (SyncWorkBlock)getSyncWorkBlock:(SyncWorkBlock)block
 {
     return block;
+}
+
+- (void)setAsyncWorkBlock:(AsyncWorkBlock)block
+{
+    self.asyncBlock = block;
+}
+
+- (AsyncWorkBlock)getAsyncWorkBlock:(AsyncWorkBlock)block
+{
+    return self.asyncBlock;
 }
 
 - (void)cancel

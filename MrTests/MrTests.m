@@ -59,7 +59,7 @@
     NSLog(@"query %@", [[DataLibrary querier] query:obj.class]);
     NSLog(@"query condition %@", [[DataLibrary querier] query:obj.class otherCondition:@"WHERE rowId = 4" withParam:nil]);
     
-    MrWork* work = [PipeManager doWorkInMainPipe:^(BOOL isCancel) {
+    MrWork* work = [PipeManager doSyncWorkInMainPipe:^(BOOL isCancel) {
         if (isCancel) {
             NSLog(@"work has been canceled !");
         } else {
@@ -68,15 +68,21 @@
     }];
     [work cancel];
     
-    [PipeManager doWork:^(BOOL isCancel) {
+    [PipeManager doSyncWork:^(BOOL isCancel) {
         NSLog(@"work in other queue ! thread:%@", [NSThread currentThread]);
     }];
     
     QueuePipe* pipe = [PipeManager createQueuePipe];
-    [pipe addWorkBlock:^(BOOL isCancel) {
+    [pipe addSyncWorkBlock:^(BOOL isCancel) {
         NSLog(@"work1 in queue pipe ! thread:%@", [NSThread currentThread]);
     }];
-    [pipe addWorkBlock:^(BOOL isCancel) {
+    
+    [pipe addAsyncWorkBlock:^(BOOL isCancel, finishWorkBlock finishBlock) {
+        NSLog(@"work1.5 in queue pipe ! thread:%@", [NSThread currentThread]);
+        finishBlock();
+    }];
+    
+    [pipe addSyncWorkBlock:^(BOOL isCancel) {
         NSLog(@"work2 in queue pipe ! thread:%@", [NSThread currentThread]);
     }];
     
@@ -84,12 +90,12 @@
     
     [ignorePipe ready];
     
-    [ignorePipe addWorkBlock:^(BOOL isCancel) {
+    [ignorePipe addSyncWorkBlock:^(BOOL isCancel) {
         NSLog(@"work4 in ignore pipe, the first work ! thread:%@", [NSThread currentThread]);
     }];
     
     for (NSInteger i = 0; i < 100; i++) {
-        [ignorePipe addWorkBlock:^(BOOL isCancel) {
+        [ignorePipe addSyncWorkBlock:^(BOOL isCancel) {
             NSLog(@"work4 in ignore pipe ! thread:%@", [NSThread currentThread]);
         }];
     }
@@ -101,7 +107,7 @@
     [replacePipe ready];
     
     for (NSInteger i = 0; i < 100; i++) {
-        [replacePipe addWorkBlock:^(BOOL isCancel) {
+        [replacePipe addSyncWorkBlock:^(BOOL isCancel) {
             if (isCancel) {
                 NSLog(@"work6 canceled in replace pipe ! thread:%@", [NSThread currentThread]);
             } else {
@@ -110,7 +116,7 @@
         }];
     }
     
-    [replacePipe addWorkBlock:^(BOOL isCancel) {
+    [replacePipe addSyncWorkBlock:^(BOOL isCancel) {
         NSLog(@"work6 in replace pipe, the end work ! thread:%@", [NSThread currentThread]);
     }];
     

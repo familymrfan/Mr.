@@ -12,7 +12,8 @@
 @interface Pipe : NSObject
 
 - (void)addWork:(MrWork *)work;
-- (void)addWorkBlock:(WorkBlock)block;
+- (void)addSyncWorkBlock:(SyncWorkBlock)block;
+- (void)addAsyncWorkBlock:(AsyncWorkBlock)block;
 
 - (void)ready;
 - (void)flush;

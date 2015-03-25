@@ -11,21 +11,38 @@
 
 @implementation PipeManager
 
-+ (MrWork *)doWork:(WorkBlock)block
++ (MrWork *)doSyncWork:(SyncWorkBlock)block
 {
     MrWork* work = [[MrWork alloc] init];
-    [work setWorkBlock:block];
+    [work setSyncWorkBlock:block];
     [[self createQueuePipe] addWork:work];
     return work;
 }
 
-+ (MrWork *)doWorkInMainPipe:(WorkBlock)block
++ (MrWork *)doSyncWorkInMainPipe:(SyncWorkBlock)block
 {
     MrWork* work = [[MrWork alloc] init];
-    [work setWorkBlock:block];
+    [work setSyncWorkBlock:block];
     [[self mainPipe] addWork:work];
     return work;
 }
+
++ (MrWork *)doAyncWork:(AsyncWorkBlock)block
+{
+    MrWork* work = [[MrWork alloc] init];
+    [work setAsyncWorkBlock:block];
+    [[self createQueuePipe] addWork:work];
+    return work;
+}
+
++ (MrWork *)doAyncWorkInMainPipe:(AsyncWorkBlock)block
+{
+    MrWork* work = [[MrWork alloc] init];
+    [work setAsyncWorkBlock:block];
+    [[self mainPipe] addWork:work];
+    return work;
+}
+
 
 + (MainPipe *)mainPipe
 {
