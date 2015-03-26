@@ -9,13 +9,6 @@
 #import "QueuePipe.h"
 #import "PipeManager.h"
 
-
-@interface QueuePipe ()
-
-@property (nonatomic) dispatch_queue_t queue;
-
-@end
-
 @implementation QueuePipe
 
 - (instancetype)init

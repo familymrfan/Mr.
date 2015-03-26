@@ -11,12 +11,15 @@
 
 @interface Pipe : NSObject
 
+@property (nonatomic) dispatch_queue_t queue;
+
 - (void)addWork:(MrWork *)work;
-- (void)addSyncWorkBlock:(SyncWorkBlock)block;
-- (void)addAsyncWorkBlock:(AsyncWorkBlock)block;
+- (void)addWorkBlock:(WorkBlock)block;
+- (void)addWaitFinishWorkBlock:(WaitFinishWorkBlock)block;
 
 - (void)ready;
 - (void)flush;
+- (void)wait;
 
 - (NSArray *)getWorks;
 - (void)doWorks;

@@ -9,13 +9,6 @@
 #import "IgnorePipe.h"
 #import "PipeManager.h"
 
-@interface IgnorePipe ()
-
-@property (nonatomic) dispatch_queue_t queue;
-
-@end
-
-
 @implementation IgnorePipe
 
 - (instancetype)init

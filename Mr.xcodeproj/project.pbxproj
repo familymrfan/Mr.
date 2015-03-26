@@ -16,6 +16,8 @@
 		0B2CED021ABF1FA400B319D5 /* Pipe.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B2CED001ABF1FA400B319D5 /* Pipe.h */; };
 		0B2CED031ABF1FA400B319D5 /* Pipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2CED011ABF1FA400B319D5 /* Pipe.m */; };
 		0B2CED131ABFDBF400B319D5 /* PrefixHeader.pch in Headers */ = {isa = PBXBuildFile; fileRef = 0B2CED121ABFDBF400B319D5 /* PrefixHeader.pch */; };
+		0B2CED521AC3EE0400B319D5 /* NSRunLoop+blockRun.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B2CED501AC3EE0400B319D5 /* NSRunLoop+blockRun.h */; };
+		0B2CED531AC3EE0400B319D5 /* NSRunLoop+blockRun.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2CED511AC3EE0400B319D5 /* NSRunLoop+blockRun.m */; };
 		E31CF3B51AB55252003CDD03 /* DataPathProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = E31CF3B31AB55252003CDD03 /* DataPathProvider.h */; };
 		E31CF3B61AB55252003CDD03 /* DataPathProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E31CF3B41AB55252003CDD03 /* DataPathProvider.m */; };
 		E31CF3BB1AB57922003CDD03 /* Macro.h in Headers */ = {isa = PBXBuildFile; fileRef = E31CF3BA1AB57922003CDD03 /* Macro.h */; };
@@ -130,6 +132,8 @@
 		0B2CED001ABF1FA400B319D5 /* Pipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pipe.h; sourceTree = "<group>"; };
 		0B2CED011ABF1FA400B319D5 /* Pipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pipe.m; sourceTree = "<group>"; };
 		0B2CED121ABFDBF400B319D5 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		0B2CED501AC3EE0400B319D5 /* NSRunLoop+blockRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSRunLoop+blockRun.h"; path = "util/NSRunLoop+blockRun.h"; sourceTree = "<group>"; };
+		0B2CED511AC3EE0400B319D5 /* NSRunLoop+blockRun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSRunLoop+blockRun.m"; path = "util/NSRunLoop+blockRun.m"; sourceTree = "<group>"; };
 		E31CF3B31AB55252003CDD03 /* DataPathProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataPathProvider.h; path = data_library/DataPathProvider.h; sourceTree = "<group>"; };
 		E31CF3B41AB55252003CDD03 /* DataPathProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataPathProvider.m; path = data_library/DataPathProvider.m; sourceTree = "<group>"; };
 		E31CF3BA1AB57922003CDD03 /* Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Macro.h; path = util/Macro.h; sourceTree = "<group>"; };
@@ -218,6 +222,8 @@
 		E31CF3B71AB578B4003CDD03 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				0B2CED501AC3EE0400B319D5 /* NSRunLoop+blockRun.h */,
+				0B2CED511AC3EE0400B319D5 /* NSRunLoop+blockRun.m */,
 				E31CF3BA1AB57922003CDD03 /* Macro.h */,
 			);
 			name = util;
@@ -359,6 +365,7 @@
 				E3466CD31AB45BF60071CE9C /* DataSaver.h in Headers */,
 				E37D7EA01ABF262D006E694F /* IgnorePipe.h in Headers */,
 				E37D7EA41ABF2656006E694F /* ReplacePipe.h in Headers */,
+				0B2CED521AC3EE0400B319D5 /* NSRunLoop+blockRun.h in Headers */,
 				0B2CED021ABF1FA400B319D5 /* Pipe.h in Headers */,
 				E37D7E9C1ABF25BC006E694F /* QueuePipe.h in Headers */,
 				E3466CCF1AB45B900071CE9C /* DataLibrary.h in Headers */,
@@ -535,6 +542,7 @@
 				E3466CD91AB493AB0071CE9C /* MrObject.m in Sources */,
 				E3466CB61AB453F80071CE9C /* FMDatabaseAdditions.m in Sources */,
 				0B2CECF71ABF1A3900B319D5 /* NotifyBundle.m in Sources */,
+				0B2CED531AC3EE0400B319D5 /* NSRunLoop+blockRun.m in Sources */,
 				E37D7EA51ABF2656006E694F /* ReplacePipe.m in Sources */,
 				E37D7EA11ABF262D006E694F /* IgnorePipe.m in Sources */,
 				E3466CBD1AB453F80071CE9C /* FMResultSet.m in Sources */,

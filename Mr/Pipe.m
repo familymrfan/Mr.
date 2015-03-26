@@ -61,28 +61,28 @@
     [self.readyWorks addObject:work];
 }
 
-- (void)addSyncWorkBlock:(SyncWorkBlock)block
+- (void)addWorkBlock:(WorkBlock)block
 {
-    MrWork* work = [[MrWork alloc] initWithSyncBlock:block];
+    MrWork* work = [[MrWork alloc] initWithWorkBlock:block];
     [self addWork:work];
 }
 
 
-- (void)readySyncWorkBlock:(SyncWorkBlock)block
+- (void)readySyncWorkBlock:(WorkBlock)block
 {
-    MrWork* work = [[MrWork alloc] initWithSyncBlock:block];
+    MrWork* work = [[MrWork alloc] initWithWorkBlock:block];
     [self readyWork:work];
 }
 
-- (void)addAsyncWorkBlock:(AsyncWorkBlock)block
+- (void)addWaitFinishWorkBlock:(WaitFinishWorkBlock)block
 {
-    MrWork* work = [[MrWork alloc] initWithAsyncBlock:block];
+    MrWork* work = [[MrWork alloc] initWithWaitFinishWorkBlock:block];
     [self addWork:work];
 }
 
-- (void)readyAsyncWorkBlock:(AsyncWorkBlock)block
+- (void)readyAsyncWorkBlock:(WaitFinishWorkBlock)block
 {
-    MrWork* work = [[MrWork alloc] initWithAsyncBlock:block];
+    MrWork* work = [[MrWork alloc] initWithWaitFinishWorkBlock:block];
     [self readyWork:work];
 }
 
@@ -102,6 +102,15 @@
 - (void)doWorks
 {
     [self doesNotRecognizeSelector:_cmd];
+}
+
+- (void)wait
+{
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    dispatch_barrier_async(self.queue, ^{
+        dispatch_semaphore_signal(semaphore);
+    });
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
 }
 
 @end

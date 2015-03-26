@@ -8,12 +8,6 @@
 
 #import "ReplacePipe.h"
 
-@interface ReplacePipe ()
-
-@property (nonatomic) dispatch_queue_t queue;
-
-@end
-
 @implementation ReplacePipe
 
 - (instancetype)init

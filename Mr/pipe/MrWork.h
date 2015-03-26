@@ -9,25 +9,25 @@
 #import <Foundation/Foundation.h>
 #import "NotifyBundle.h"
 
-typedef void(^SyncWorkBlock)(BOOL isCancel);
+typedef void(^WorkBlock)(BOOL isCancel);
 typedef void(^finishWorkBlock)();
-typedef void(^AsyncWorkBlock)(BOOL isCancel, finishWorkBlock finishBlock);
+typedef void(^WaitFinishWorkBlock)(BOOL isCancel, finishWorkBlock finishBlock);
 
 @interface MrWork : NSObject
 
-- (instancetype)initWithSyncBlock:(SyncWorkBlock)block;
-- (instancetype)initWithAsyncBlock:(AsyncWorkBlock)block;
+- (instancetype)initWithWorkBlock:(WorkBlock)block;
+- (instancetype)initWithWaitFinishWorkBlock:(WaitFinishWorkBlock)block;
 
 // 添加到通知束当中，当这些工作都完成的时候产生这个通知work
 - (void)attachNotifyBundle:(NotifyBundle *)notify;
 
 // 设置同步工作
-- (void)setSyncWorkBlock:(SyncWorkBlock)block;
-- (SyncWorkBlock)getSyncWorkBlock:(SyncWorkBlock)block;
+- (void)setWorkBlock:(WorkBlock)block;
+- (WorkBlock)getWorkBlock:(WorkBlock)block;
 
 // 设置异步工作
-- (void)setAsyncWorkBlock:(AsyncWorkBlock)block;
-- (AsyncWorkBlock)getAsyncWorkBlock:(AsyncWorkBlock)block;
+- (void)setWaitFinishWorkBlock:(WaitFinishWorkBlock)block;
+- (WaitFinishWorkBlock)getWaitFinishWorkBlock:(WaitFinishWorkBlock)block;
 
 // do work
 - (void)doit;

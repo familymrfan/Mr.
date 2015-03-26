@@ -13,14 +13,14 @@
 @property (nonatomic, assign) BOOL isCancel;
 @property (nonatomic, assign) BOOL isExecute;
 @property (nonatomic, assign) BOOL isFinish;
-@property (nonatomic, copy) SyncWorkBlock syncBlock;
-@property (nonatomic, copy) AsyncWorkBlock asyncBlock;
+@property (nonatomic, copy) WorkBlock syncBlock;
+@property (nonatomic, copy) WaitFinishWorkBlock asyncBlock;
 
 @end
 
 @implementation MrWork
 
-- (instancetype)initWithSyncBlock:(SyncWorkBlock)block
+- (instancetype)initWithWorkBlock:(WorkBlock)block
 {
     self = [super init];
     if (self) {
@@ -29,7 +29,7 @@
     return self;
 }
 
-- (instancetype)initWithAsyncBlock:(AsyncWorkBlock)block
+- (instancetype)initWithWaitFinishWorkBlock:(WaitFinishWorkBlock)block
 {
     self = [super init];
     if (self) {
@@ -61,22 +61,22 @@
     }
 }
 
-- (void)setSyncWorkBlock:(SyncWorkBlock)block
+- (void)setWorkBlock:(WorkBlock)block
 {
     self.syncBlock = block;
 }
 
-- (SyncWorkBlock)getSyncWorkBlock:(SyncWorkBlock)block
+- (WorkBlock)getWorkBlock:(WorkBlock)block
 {
     return block;
 }
 
-- (void)setAsyncWorkBlock:(AsyncWorkBlock)block
+- (void)setWaitFinishWorkBlock:(WaitFinishWorkBlock)block
 {
     self.asyncBlock = block;
 }
 
-- (AsyncWorkBlock)getAsyncWorkBlock:(AsyncWorkBlock)block
+- (WaitFinishWorkBlock)getWaitFinishWorkBlock:(WaitFinishWorkBlock)block
 {
     return self.asyncBlock;
 }
