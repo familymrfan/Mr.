@@ -32,7 +32,6 @@
                 }
             }];
             [executeWork doit];
-            [executeWork finish];
         });
     }
 }

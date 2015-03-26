@@ -11,6 +11,7 @@
 #import "DataLibrary.h"
 #import "MrObject.h"
 #import "PipeManager.h"
+#import "MrNotifyCenter.h"
 #import "NSRunLoop+blockRun.h"
 
 @interface TestObject : MrObject
@@ -163,6 +164,29 @@
     [pipe wait];
     
     XCTAssertEqual(j, 0);
+}
+
+- (void)testNotifyBundle
+{
+    __block NSInteger i = 0;
+    NotifyBundle* bundle = [MrNotifyCenter createNotifyBundle:^{
+        XCTAssertEqual(i, 2);
+    }];
+    
+    MrWork* work1 = [bundle bindWorkBlock:^(BOOL isCancel) {
+        i = i + 1;
+    }];
+    
+    MrWork* work2 = [bundle bindWorkBlock:^(BOOL isCancel) {
+        i = i + 1;
+    }];
+    
+    [bundle start];
+    
+    QueuePipe* pipe = [PipeManager createQueuePipe];
+    [pipe addWork:work1];
+    [pipe addWork:work2];
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:5.0]];
 }
 
 /*- (void)testExample {

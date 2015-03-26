@@ -7,6 +7,7 @@
 //
 
 #import "MrWork.h"
+#import "NotifyBundle.h"
 
 @interface MrWork ()
 
@@ -49,7 +50,7 @@
         self.isExecute = YES;
         self.syncBlock([self isCancel]);
         self.isExecute = NO;
-        self.isFinish = YES;
+        [self finish];
     } else if (self.asyncBlock && !self.isFinish) {
         self.isExecute = YES;
         dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);

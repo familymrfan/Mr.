@@ -17,7 +17,6 @@
         if (!work.isExecute && !work.isFinish) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [work doit];
-                [work finish];
             });
         }
     }];

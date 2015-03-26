@@ -7,12 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NotifyBundle.h"
 
 typedef void(^WorkBlock)(BOOL isCancel);
 typedef void(^finishWorkBlock)();
 typedef void(^WaitFinishWorkBlock)(BOOL isCancel, finishWorkBlock finishBlock);
 
+@class NotifyBundle;
 @interface MrWork : NSObject
 
 - (instancetype)initWithWorkBlock:(WorkBlock)block;

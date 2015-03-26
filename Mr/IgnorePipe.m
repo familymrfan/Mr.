@@ -31,7 +31,6 @@
                 }
             }];
             [executeWork doit];
-            [executeWork finish];
         });
     }
 }

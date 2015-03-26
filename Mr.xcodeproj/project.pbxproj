@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B1E36101AC4202F008097C1 /* MrNotifyCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B1E360E1AC4202F008097C1 /* MrNotifyCenter.h */; };
+		0B1E36111AC4202F008097C1 /* MrNotifyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1E360F1AC4202F008097C1 /* MrNotifyCenter.m */; };
 		0B2CECF41ABF1A3900B319D5 /* MrWork.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B2CECEE1ABF1A3900B319D5 /* MrWork.h */; };
 		0B2CECF51ABF1A3900B319D5 /* MrWork.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2CECEF1ABF1A3900B319D5 /* MrWork.m */; };
 		0B2CECF61ABF1A3900B319D5 /* NotifyBundle.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B2CECF01ABF1A3900B319D5 /* NotifyBundle.h */; };
@@ -123,6 +125,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B1E360E1AC4202F008097C1 /* MrNotifyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MrNotifyCenter.h; path = pipe/MrNotifyCenter.h; sourceTree = "<group>"; };
+		0B1E360F1AC4202F008097C1 /* MrNotifyCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MrNotifyCenter.m; path = pipe/MrNotifyCenter.m; sourceTree = "<group>"; };
 		0B2CECEE1ABF1A3900B319D5 /* MrWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MrWork.h; path = pipe/MrWork.h; sourceTree = "<group>"; };
 		0B2CECEF1ABF1A3900B319D5 /* MrWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MrWork.m; path = pipe/MrWork.m; sourceTree = "<group>"; };
 		0B2CECF01ABF1A3900B319D5 /* NotifyBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotifyBundle.h; path = pipe/NotifyBundle.h; sourceTree = "<group>"; };
@@ -203,6 +207,8 @@
 				E37D7E9F1ABF262D006E694F /* IgnorePipe.m */,
 				E37D7E961ABF2517006E694F /* MainPipe.h */,
 				E37D7E971ABF2517006E694F /* MainPipe.m */,
+				0B1E360E1AC4202F008097C1 /* MrNotifyCenter.h */,
+				0B1E360F1AC4202F008097C1 /* MrNotifyCenter.m */,
 				0B2CECEE1ABF1A3900B319D5 /* MrWork.h */,
 				0B2CECEF1ABF1A3900B319D5 /* MrWork.m */,
 				0B2CECF01ABF1A3900B319D5 /* NotifyBundle.h */,
@@ -382,6 +388,7 @@
 				E37D7E981ABF2517006E694F /* MainPipe.h in Headers */,
 				E3466CD81AB493AB0071CE9C /* MrObject.h in Headers */,
 				E3466CB51AB453F80071CE9C /* FMDatabaseAdditions.h in Headers */,
+				0B1E36101AC4202F008097C1 /* MrNotifyCenter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,6 +541,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B1E36111AC4202F008097C1 /* MrNotifyCenter.m in Sources */,
 				E3466CB41AB453F80071CE9C /* FMDatabase.m in Sources */,
 				0B2CED031ABF1FA400B319D5 /* Pipe.m in Sources */,
 				E3466CBA1AB453F80071CE9C /* FMDatabaseQueue.m in Sources */,

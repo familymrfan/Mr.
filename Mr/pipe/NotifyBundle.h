@@ -7,9 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MrWork.h"
+
+typedef void(^NotifyBlock)();
 
 @interface NotifyBundle : NSObject
 
+@property (nonatomic, copy) NotifyBlock notifyBlock;
 
+- (MrWork *)bindWork:(MrWork *)work;
+- (MrWork *)bindWorkBlock:(WorkBlock)block;
+- (MrWork *)bindWaitFinishWorkBlock:(WaitFinishWorkBlock)block;
+
+- (void)start;
 
 @end

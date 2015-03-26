@@ -26,7 +26,6 @@
         if (!work.isExecute && !work.isFinish) {
             dispatch_async(self.queue, ^{
                 [work doit];
-                [work finish];
             });
         }
     }];
