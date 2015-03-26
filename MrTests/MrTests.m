@@ -144,7 +144,7 @@
     
     [pipe wait];
     
-    XCTAssertEqual(i, 1);
+    XCTAssertNotEqual(i, 0);
 
     __block NSInteger j = 1;
     
