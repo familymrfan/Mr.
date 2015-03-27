@@ -29,7 +29,7 @@
 - (MrWork *)bindWork:(MrWork *)work
 {
     NSAssert(self.isStart == NO, @"bind is started ! you can not bind work");
-    NSAssert(!work.isExecute && !work.isFinish, @"work not execute if you want bind notify !");
+    NSAssert(!work.isExecute && !work.isFinish, @"the work should not execute if you want bind notify !");
     [self.works addObject:work];
     return work;
 }
