@@ -26,24 +26,25 @@
     return self;
 }
 
-- (MrWork *)bindWork:(MrWork *)work
+- (void)bindWork:(MrWork *)work
 {
     NSAssert(self.isStart == NO, @"bind is started ! you can not bind work");
     NSAssert(!work.isExecute && !work.isFinish, @"the work should not execute if you want bind notify !");
     [self.works addObject:work];
-    return work;
 }
 
 - (MrWork* )bindWorkBlock:(WorkBlock)block
 {
     MrWork* work = [[MrWork alloc] initWithWorkBlock:block];
-    return [self bindWork:work];
+    [self bindWork:work];
+    return work;
 }
 
 - (MrWork *)bindWaitFinishWorkBlock:(WaitFinishWorkBlock)block
 {
     MrWork* work = [[MrWork alloc] initWithWaitFinishWorkBlock:block];
-    return [self bindWork:work];
+    [self bindWork:work];
+    return work;
 }
 
 - (void)start

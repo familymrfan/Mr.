@@ -15,7 +15,7 @@ typedef void(^NotifyBlock)();
 
 @property (nonatomic, copy) NotifyBlock notifyBlock;
 
-- (MrWork *)bindWork:(MrWork *)work;
+- (void)bindWork:(MrWork *)work;
 - (MrWork *)bindWorkBlock:(WorkBlock)block;
 - (MrWork *)bindWaitFinishWorkBlock:(WaitFinishWorkBlock)block;
 

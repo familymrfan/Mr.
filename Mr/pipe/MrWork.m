@@ -41,7 +41,7 @@
 
 - (void)attachNotifyBundle:(NotifyBundle *)notify
 {
-    
+    [notify bindWork:self];
 }
 
 - (void)doit
