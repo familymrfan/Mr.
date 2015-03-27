@@ -186,6 +186,29 @@
     QueuePipe* pipe = [PipeManager createQueuePipe];
     [pipe addWork:work1];
     [pipe addWork:work2];
+    
+    __block NSInteger j = 0;
+    NotifyBundle* bundle2 = [MrNotifyCenter createNotifyBundle:^{
+        XCTAssertEqual(j, 2);
+    }];
+    
+    
+    MrWork* work3  = [[MrWork alloc] initWithWorkBlock:^(BOOL isCancel) {
+        j++;
+    }];
+    
+    MrWork* work4  = [[MrWork alloc] initWithWorkBlock:^(BOOL isCancel) {
+        j++;
+    }];
+    
+    [bundle2 bindWork:work3];
+    [bundle2 bindWork:work4];
+    
+    [bundle2 start];
+    
+    [PipeManager doWork:work3];
+    [PipeManager doWork:work4];
+    
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:5.0]];
 }
 

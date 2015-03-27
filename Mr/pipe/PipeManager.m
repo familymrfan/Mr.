@@ -11,6 +11,16 @@
 
 @implementation PipeManager
 
++ (void)doWork:(MrWork *)work
+{
+    [[self createQueuePipe] addWork:work];
+}
+
++ (void)doWorkInMainPipe:(MrWork *)work
+{
+    [[self mainPipe] addWork:work];
+}
+
 + (MrWork *)asyncDoWork:(WorkBlock)block
 {
     MrWork* work = [[MrWork alloc] init];

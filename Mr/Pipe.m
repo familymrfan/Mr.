@@ -61,29 +61,33 @@
     [self.readyWorks addObject:work];
 }
 
-- (void)addWorkBlock:(WorkBlock)block
+- (MrWork *)addWorkBlock:(WorkBlock)block
 {
     MrWork* work = [[MrWork alloc] initWithWorkBlock:block];
     [self addWork:work];
+    return work;
 }
 
 
-- (void)readySyncWorkBlock:(WorkBlock)block
+- (MrWork *)readySyncWorkBlock:(WorkBlock)block
 {
     MrWork* work = [[MrWork alloc] initWithWorkBlock:block];
     [self readyWork:work];
+    return work;
 }
 
-- (void)addWaitFinishWorkBlock:(WaitFinishWorkBlock)block
+- (MrWork *)addWaitFinishWorkBlock:(WaitFinishWorkBlock)block
 {
     MrWork* work = [[MrWork alloc] initWithWaitFinishWorkBlock:block];
     [self addWork:work];
+    return work;
 }
 
-- (void)readyAsyncWorkBlock:(WaitFinishWorkBlock)block
+- (MrWork *)readyAsyncWorkBlock:(WaitFinishWorkBlock)block
 {
     MrWork* work = [[MrWork alloc] initWithWaitFinishWorkBlock:block];
     [self readyWork:work];
+    return work;
 }
 
 - (void)flush

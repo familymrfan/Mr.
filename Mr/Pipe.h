@@ -14,8 +14,8 @@
 @property (nonatomic) dispatch_queue_t queue;
 
 - (void)addWork:(MrWork *)work;
-- (void)addWorkBlock:(WorkBlock)block;
-- (void)addWaitFinishWorkBlock:(WaitFinishWorkBlock)block;
+- (MrWork *)addWorkBlock:(WorkBlock)block;
+- (MrWork *)addWaitFinishWorkBlock:(WaitFinishWorkBlock)block;
 
 - (void)ready;
 - (void)flush;

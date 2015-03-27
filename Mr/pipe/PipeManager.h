@@ -14,6 +14,8 @@
 
 @interface PipeManager : NSObject
 
++ (void)doWork:(MrWork *)work;
++ (void)doWorkInMainPipe:(MrWork *)work;
 + (MrWork *)asyncDoWork:(WorkBlock)block;
 + (MrWork *)asyncDoWorkInMainPipe:(WorkBlock)block;
 
