@@ -24,7 +24,16 @@
 {
     self = [super init];
     if (self) {
+        self = [self init];
         self.initResult = initResult;
+    }
+    return self;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
         self.works = [NSMutableArray array];
         self.suspendWorks = [NSMutableArray array];
     }
