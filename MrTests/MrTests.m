@@ -10,7 +10,7 @@
 #import <XCTest/XCTest.h>
 #import "DataLibrary.h"
 #import "MrObject.h"
-#import "PipeManager.h"
+#import "QueueManager.h"
 #import "MrNotifyCenter.h"
 #import "NSRunLoop+blockRun.h"
 
@@ -80,37 +80,59 @@
     [[DataLibrary saver] save:tObj];*/
 }
 
-- (void)testPipeManagerDoWork
+- (void)testQueueManagerDoWork
 {
     __block NSInteger i = 0;
     XCTestExpectation *completionExpectation = [self expectationWithDescription:@"async method"];
     
-    [PipeManager asyncDoWork:^(BOOL isCancel) {
+    // 直接工作在其他线程，不要忘记调用finish，queue不会释放哦直到work finish
+    [QueueManager asyncDoWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
+        XCTAssertNotEqual([NSThread currentThread], [NSThread mainThread]);
         i++;
+        finishBlock(nil);
         [completionExpectation fulfill];
     }];
     
     [self waitForExpectationsWithTimeout:5.0 handler:nil];
+    
     XCTAssertEqual(i, 1);
     
-    [PipeManager asyncDoWorkInMainPipe:^(BOOL isCancel) {
+    // 传递性
+    [QueueManager asyncDoWorkBlockInMainQueue:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
         XCTAssertEqual([NSThread currentThread], [NSThread mainThread]);
+        finishBlock(@1);
+    }];
+    
+    [QueueManager asyncDoWorkBlockInMainQueue:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
+        XCTAssertEqual([NSThread currentThread], [NSThread mainThread]);
+        XCTAssert([result isEqualToNumber:@1]);
+        finishBlock(@2);
+    }];
+    
+    [QueueManager asyncDoWorkBlockInMainQueue:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
+        XCTAssertEqual([NSThread currentThread], [NSThread mainThread]);
+        XCTAssert([result isEqualToNumber:@2]);
+        finishBlock(nil);
     }];
     
     completionExpectation = [self expectationWithDescription:@"async method"];
     
-    [PipeManager asyncDoWork:^(BOOL isCancel) {
+    // 可嵌套性
+    [QueueManager asyncDoWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
         i++;
-        [PipeManager asyncDoWork:^(BOOL isCancel) {
+        [QueueManager asyncDoWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
             i++;
+            finishBlock(nil);
             [completionExpectation fulfill];
             
-            MrWork* work = [PipeManager asyncDoWorkInMainPipe:^(BOOL isCancel) {
+            MrWork* work = [QueueManager asyncDoWorkBlockInMainQueue:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
                 XCTAssertEqual(isCancel, YES);
                 XCTAssertEqual([NSThread currentThread], [NSThread mainThread]);
+                finishBlock(nil);
             }];
             [work cancel];
         }];
+        finishBlock(nil);
     }];
     
     [self waitForExpectationsWithTimeout:5.0 handler:nil];
@@ -120,177 +142,185 @@
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:5.0]];
 }
 
-- (void)testQueuePipe
+// queue难道不会在出域的时候释放么，请相信你的眼睛
+- (void)stackQueue:(NSMutableDictionary *)change
 {
-    __block NSInteger i = 0;
-    QueuePipe* pipe = [PipeManager createQueuePipe];
-    XCTestExpectation *completionExpectation = [self expectationWithDescription:@"async method"];
-    [pipe addWorkBlock:^(BOOL isCancel) {
-        i++;
-        [completionExpectation fulfill];
-    }];
-    [self waitForExpectationsWithTimeout:5.0 handler:nil];
-    XCTAssertEqual(i, 1);
+    SerializeQueue* queue = [QueueManager createSerializeQueue];
     
-    [pipe addWorkBlock:^(BOOL isCancel) {
-        [PipeManager asyncDoWork:^(BOOL isCancel) {
-            [[NSRunLoop currentRunLoop] blockRun:1];
-            i = i * 3;
-        }];
+    // 传递性
+    [queue enqueueWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
+        [change setObject:@"green" forKey:@"color"];
+        finishBlock(@"yellow");
     }];
     
-    [pipe addWorkBlock:^(BOOL isCancel) {
-        i = i % 3;
+    [queue enqueueWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
+        [change setObject:result forKey:@"color"];
+        finishBlock(@"white");
     }];
     
-    [pipe wait];
-    
-    XCTAssertNotEqual(i, 0);
-
-    __block NSInteger j = 1;
-    
-    [pipe addWaitFinishWorkBlock:^(BOOL isCancel, finishWorkBlock finishBlock) {
-        [PipeManager asyncDoWork:^(BOOL isCancel) {
-            [[NSRunLoop currentRunLoop] blockRun:1];
-            j = j * 3;
-            finishBlock();
-        }];
+    [queue enqueueWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
+        [change setObject:result forKey:@"color"];
+        finishBlock(@"blue");
     }];
     
-    [pipe addWorkBlock:^(BOOL isCancel) {
-        j = j % 3;
+    [queue enqueueWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
+        [change setObject:result forKey:@"color"];
+        finishBlock(nil);
     }];
-    
-    [pipe wait];
-    
-    XCTAssertEqual(j, 0);
 }
 
+// queue 会同步等待所有任务完成
+- (void)waitQueue:(NSMutableDictionary *)change
+{
+    SerializeQueue* queue = [QueueManager createSerializeQueue];
+    
+    // 传递性
+    [queue enqueueWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
+        [[NSRunLoop currentRunLoop] blockRun:2];
+        [change setObject:@"green" forKey:@"color"];
+        finishBlock(@"yellow");
+    }];
+    
+    [queue enqueueWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
+        [[NSRunLoop currentRunLoop] blockRun:2];
+        [change setObject:result forKey:@"color"];
+        finishBlock(@"white");
+    }];
+    
+    [queue enqueueWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
+        [[NSRunLoop currentRunLoop] blockRun:2];
+        [change setObject:result forKey:@"color"];
+        finishBlock(@"blue");
+    }];
+    
+    [queue enqueueWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
+        [[NSRunLoop currentRunLoop] blockRun:2];
+        [change setObject:result forKey:@"color"];
+        finishBlock(nil);
+    }];
+    
+    [queue wait];
+}
+
+// 被挂起的queue，我是否可以先去吃饭，然后再工作，是的，这是我们对你的福利
+- (void)suspendQueue:(NSMutableDictionary *)change
+{
+    SerializeQueue* queue = [QueueManager createSerializeQueue];
+    
+    // 传递性
+    [queue enqueueWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
+        [[NSRunLoop currentRunLoop] blockRun:2];
+        [change setObject:@"green" forKey:@"color"];
+        finishBlock(@"yellow");
+    }];
+    
+    [queue enqueueWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
+        [[NSRunLoop currentRunLoop] blockRun:2];
+        [change setObject:result forKey:@"color"];
+        finishBlock(@"white");
+    }];
+    
+    [queue enqueueWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
+        [[NSRunLoop currentRunLoop] blockRun:2];
+        [change setObject:result forKey:@"color"];
+        finishBlock(@"blue");
+    }];
+    
+    [queue enqueueWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
+        [[NSRunLoop currentRunLoop] blockRun:2];
+        [change setObject:result forKey:@"color"];
+        finishBlock(nil);
+    }];
+    
+    [QueueManager asyncDoWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
+        [[NSRunLoop currentRunLoop] blockRun:4];
+        [queue suspend];
+    }];
+    
+    [QueueManager asyncDoWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
+        [[NSRunLoop currentRunLoop] blockRun:10];
+        [queue resume];
+    }];
+    
+    [queue wait];
+}
+
+- (void)testSerializeQueue
+{
+    NSMutableDictionary* change = [NSMutableDictionary dictionaryWithDictionary:@{@"color":@"red"}];
+    [self stackQueue:change];
+    
+    [[NSRunLoop currentRunLoop] blockRun:2];
+    
+    NSLog(@"stackQueue test over ");
+    
+    NSString* color = [change objectForKey:@"color"];
+    XCTAssert([color isEqualToString:@"blue"]);
+    
+    [self waitQueue:change];
+    
+    color = [change objectForKey:@"color"];
+    XCTAssert([color isEqualToString:@"blue"]);
+    
+    NSLog(@"waitQueue test over ");
+    
+    [self suspendQueue:change];
+    
+    color = [change objectForKey:@"color"];
+    XCTAssert([color isEqualToString:@"blue"]);
+    
+    NSLog(@"suspendQueue test over ");
+}
+
+// 绑起来，绑起来
 - (void)testNotifyBundle
 {
+    // 单个work绑定
     __block NSInteger i = 0;
-    NotifyBundle* bundle = [MrNotifyCenter createNotifyBundle:^{
-        XCTAssertEqual(i, 2);
+    MrWork* work = [[MrWork alloc] initWithWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
+        [[NSRunLoop currentRunLoop] blockRun:2];
+        i++;
+        finishBlock(nil);
     }];
     
-    MrWork* work1 = [bundle bindWorkBlock:^(BOOL isCancel) {
-        i = i + 1;
+    [MrNotifyCenter bindNotifyWithWork:work notifyBlock:^{
+        XCTAssertEqual(i, 1);
     }];
     
-    MrWork* work2 = [bundle bindWorkBlock:^(BOOL isCancel) {
-        i = i + 1;
-    }];
-    
-    [bundle start];
-    
-    QueuePipe* pipe = [PipeManager createQueuePipe];
-    [pipe addWork:work1];
-    [pipe addWork:work2];
+    [QueueManager asyncDoWork:work];
     
     __block NSInteger j = 0;
-    NotifyBundle* bundle2 = [MrNotifyCenter createNotifyBundle:^{
-        XCTAssertEqual(j, 2);
-    }];
-    
-    
-    MrWork* work3  = [[MrWork alloc] initWithWorkBlock:^(BOOL isCancel) {
+    // 多个works绑定
+    MrWork* work1 = [[MrWork alloc] initWithWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
+        [[NSRunLoop currentRunLoop] blockRun:2];
         j++;
+        finishBlock(nil);
     }];
-    
-    MrWork* work4  = [[MrWork alloc] initWithWorkBlock:^(BOOL isCancel) {
-        j++;
-    }];
-    
-    [bundle2 bindWork:work3];
-    [bundle2 bindWork:work4];
-    
-    [bundle2 start];
-    
-    [PipeManager doWork:work3];
-    [PipeManager doWork:work4];
-    
-    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:5.0]];
-}
 
-/*- (void)testExample {
-    TestObject* obj = [[TestObject alloc] init];
-    //obj.rowId = @3;
-    obj.stringValue = @"string update";
-    obj.numberValue = @100;
-    NSLog(@"TestObject keyNames %@", [obj keyNames]);
-    NSLog(@"TestObject keyname2Value %@", [obj keyname2Value]);
-    NSLog(@"TestObject keyname2Class %@", [obj keyname2Class]);
-    
-    [[DataLibrary saver] save:obj];
-    [[DataLibrary saver] remove:obj.class rowId:@3];
-    
-    NSLog(@"query %@", [[DataLibrary querier] query:obj.class]);
-    NSLog(@"query condition %@", [[DataLibrary querier] query:obj.class otherCondition:@"WHERE rowId = 4" withParam:nil]);
-    
-    MrWork* work = [PipeManager doSyncWorkInMainPipe:^(BOOL isCancel) {
-        if (isCancel) {
-            NSLog(@"work has been canceled !");
-        } else {
-            NSLog(@"work in main queue ! thread:%@", [NSThread currentThread]);
-        }
+    MrWork* work2 = [[MrWork alloc] initWithWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
+        [[NSRunLoop currentRunLoop] blockRun:2];
+        j++;
+        finishBlock(nil);
     }];
-    [work cancel];
-    
-    [PipeManager doSyncWork:^(BOOL isCancel) {
-        NSLog(@"work in other queue ! thread:%@", [NSThread currentThread]);
+
+    MrWork* work3 = [[MrWork alloc] initWithWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
+        [[NSRunLoop currentRunLoop] blockRun:2];
+        j++;
+        finishBlock(nil);
     }];
     
-    QueuePipe* pipe = [PipeManager createQueuePipe];
-    [pipe addSyncWorkBlock:^(BOOL isCancel) {
-        NSLog(@"work1 in queue pipe ! thread:%@", [NSThread currentThread]);
+    [MrNotifyCenter bindNotifyWithWorks:@[work1, work2, work3] notifyBlock:^{
+        XCTAssertEqual(j, 3);
     }];
     
-    [pipe addAsyncWorkBlock:^(BOOL isCancel, finishWorkBlock finishBlock) {
-        NSLog(@"work1.5 in queue pipe ! thread:%@", [NSThread currentThread]);
-        finishBlock();
+    [QueueManager asyncDoWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
+        [work1 run];
+        [work2 run];
+        [work3 run];
+        finishBlock(nil);
     }];
     
-    [pipe addSyncWorkBlock:^(BOOL isCancel) {
-        NSLog(@"work2 in queue pipe ! thread:%@", [NSThread currentThread]);
-    }];
-    
-    IgnorePipe* ignorePipe = [PipeManager createIgnorePipe];
-    
-    [ignorePipe ready];
-    
-    [ignorePipe addSyncWorkBlock:^(BOOL isCancel) {
-        NSLog(@"work4 in ignore pipe, the first work ! thread:%@", [NSThread currentThread]);
-    }];
-    
-    for (NSInteger i = 0; i < 100; i++) {
-        [ignorePipe addSyncWorkBlock:^(BOOL isCancel) {
-            NSLog(@"work4 in ignore pipe ! thread:%@", [NSThread currentThread]);
-        }];
-    }
-    
-    [ignorePipe flush];
-    
-    ReplacePipe* replacePipe = [PipeManager createReplacePipe];
-    
-    [replacePipe ready];
-    
-    for (NSInteger i = 0; i < 100; i++) {
-        [replacePipe addSyncWorkBlock:^(BOOL isCancel) {
-            if (isCancel) {
-                NSLog(@"work6 canceled in replace pipe ! thread:%@", [NSThread currentThread]);
-            } else {
-                NSLog(@"work6 in replace pipe ! thread:%@", [NSThread currentThread]);
-            }
-        }];
-    }
-    
-    [replacePipe addSyncWorkBlock:^(BOOL isCancel) {
-        NSLog(@"work6 in replace pipe, the end work ! thread:%@", [NSThread currentThread]);
-    }];
-    
-    [replacePipe flush];
-    
-    [[NSRunLoop currentRunLoop] run];
-}*/
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:10.0]];
+}
 
 @end

@@ -7,19 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B1E36101AC4202F008097C1 /* MrNotifyCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B1E360E1AC4202F008097C1 /* MrNotifyCenter.h */; };
-		0B1E36111AC4202F008097C1 /* MrNotifyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1E360F1AC4202F008097C1 /* MrNotifyCenter.m */; };
-		0B2CECF41ABF1A3900B319D5 /* MrWork.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B2CECEE1ABF1A3900B319D5 /* MrWork.h */; };
-		0B2CECF51ABF1A3900B319D5 /* MrWork.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2CECEF1ABF1A3900B319D5 /* MrWork.m */; };
-		0B2CECF61ABF1A3900B319D5 /* NotifyBundle.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B2CECF01ABF1A3900B319D5 /* NotifyBundle.h */; };
-		0B2CECF71ABF1A3900B319D5 /* NotifyBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2CECF11ABF1A3900B319D5 /* NotifyBundle.m */; };
-		0B2CECFE1ABF1E8800B319D5 /* PipeManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B2CECFC1ABF1E8800B319D5 /* PipeManager.h */; };
-		0B2CECFF1ABF1E8800B319D5 /* PipeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2CECFD1ABF1E8800B319D5 /* PipeManager.m */; };
-		0B2CED021ABF1FA400B319D5 /* Pipe.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B2CED001ABF1FA400B319D5 /* Pipe.h */; };
-		0B2CED031ABF1FA400B319D5 /* Pipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2CED011ABF1FA400B319D5 /* Pipe.m */; };
 		0B2CED131ABFDBF400B319D5 /* PrefixHeader.pch in Headers */ = {isa = PBXBuildFile; fileRef = 0B2CED121ABFDBF400B319D5 /* PrefixHeader.pch */; };
 		0B2CED521AC3EE0400B319D5 /* NSRunLoop+blockRun.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B2CED501AC3EE0400B319D5 /* NSRunLoop+blockRun.h */; };
 		0B2CED531AC3EE0400B319D5 /* NSRunLoop+blockRun.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2CED511AC3EE0400B319D5 /* NSRunLoop+blockRun.m */; };
+		0B8399C31AD25FE600FD361A /* MrNotifyCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B8399BB1AD25FE600FD361A /* MrNotifyCenter.h */; };
+		0B8399C41AD25FE600FD361A /* MrNotifyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8399BC1AD25FE600FD361A /* MrNotifyCenter.m */; };
+		0B8399C51AD25FE600FD361A /* MrQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B8399BD1AD25FE600FD361A /* MrQueue.h */; };
+		0B8399C61AD25FE600FD361A /* MrQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8399BE1AD25FE600FD361A /* MrQueue.m */; };
+		0B8399C71AD25FE600FD361A /* MrWork.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B8399BF1AD25FE600FD361A /* MrWork.h */; };
+		0B8399C81AD25FE600FD361A /* MrWork.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8399C01AD25FE600FD361A /* MrWork.m */; };
+		0B8399C91AD25FE600FD361A /* NotifyBundle.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B8399C11AD25FE600FD361A /* NotifyBundle.h */; };
+		0B8399CA1AD25FE600FD361A /* NotifyBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8399C21AD25FE600FD361A /* NotifyBundle.m */; };
+		0B8399D71AD25FF300FD361A /* MainQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B8399CD1AD25FF300FD361A /* MainQueue.h */; };
+		0B8399D81AD25FF300FD361A /* MainQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8399CE1AD25FF300FD361A /* MainQueue.m */; };
+		0B8399D91AD25FF300FD361A /* QueueManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B8399CF1AD25FF300FD361A /* QueueManager.h */; };
+		0B8399DA1AD25FF300FD361A /* QueueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8399D01AD25FF300FD361A /* QueueManager.m */; };
+		0B8399DB1AD25FF300FD361A /* SerializeQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B8399D11AD25FF300FD361A /* SerializeQueue.h */; };
+		0B8399DC1AD25FF300FD361A /* SerializeQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8399D21AD25FF300FD361A /* SerializeQueue.m */; };
 		E31CF3B51AB55252003CDD03 /* DataPathProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = E31CF3B31AB55252003CDD03 /* DataPathProvider.h */; };
 		E31CF3B61AB55252003CDD03 /* DataPathProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E31CF3B41AB55252003CDD03 /* DataPathProvider.m */; };
 		E31CF3BB1AB57922003CDD03 /* Macro.h in Headers */ = {isa = PBXBuildFile; fileRef = E31CF3BA1AB57922003CDD03 /* Macro.h */; };
@@ -46,14 +50,6 @@
 		E3466CD91AB493AB0071CE9C /* MrObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E3466CD71AB493AB0071CE9C /* MrObject.m */; };
 		E3466CDC1AB494900071CE9C /* DataQuerier.h in Headers */ = {isa = PBXBuildFile; fileRef = E3466CDA1AB494900071CE9C /* DataQuerier.h */; };
 		E3466CDD1AB494900071CE9C /* DataQuerier.m in Sources */ = {isa = PBXBuildFile; fileRef = E3466CDB1AB494900071CE9C /* DataQuerier.m */; };
-		E37D7E981ABF2517006E694F /* MainPipe.h in Headers */ = {isa = PBXBuildFile; fileRef = E37D7E961ABF2517006E694F /* MainPipe.h */; };
-		E37D7E991ABF2517006E694F /* MainPipe.m in Sources */ = {isa = PBXBuildFile; fileRef = E37D7E971ABF2517006E694F /* MainPipe.m */; };
-		E37D7E9C1ABF25BC006E694F /* QueuePipe.h in Headers */ = {isa = PBXBuildFile; fileRef = E37D7E9A1ABF25BC006E694F /* QueuePipe.h */; };
-		E37D7E9D1ABF25BC006E694F /* QueuePipe.m in Sources */ = {isa = PBXBuildFile; fileRef = E37D7E9B1ABF25BC006E694F /* QueuePipe.m */; };
-		E37D7EA01ABF262D006E694F /* IgnorePipe.h in Headers */ = {isa = PBXBuildFile; fileRef = E37D7E9E1ABF262D006E694F /* IgnorePipe.h */; };
-		E37D7EA11ABF262D006E694F /* IgnorePipe.m in Sources */ = {isa = PBXBuildFile; fileRef = E37D7E9F1ABF262D006E694F /* IgnorePipe.m */; };
-		E37D7EA41ABF2656006E694F /* ReplacePipe.h in Headers */ = {isa = PBXBuildFile; fileRef = E37D7EA21ABF2656006E694F /* ReplacePipe.h */; };
-		E37D7EA51ABF2656006E694F /* ReplacePipe.m in Sources */ = {isa = PBXBuildFile; fileRef = E37D7EA31ABF2656006E694F /* ReplacePipe.m */; };
 		E3A430A61AB8771E00F15C60 /* libBlocksKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3A430901AB872DF00F15C60 /* libBlocksKit.a */; };
 		E3A430A81AB877EA00F15C60 /* libBlocksKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3A430901AB872DF00F15C60 /* libBlocksKit.a */; };
 /* End PBXBuildFile section */
@@ -125,19 +121,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0B1E360E1AC4202F008097C1 /* MrNotifyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MrNotifyCenter.h; path = pipe/MrNotifyCenter.h; sourceTree = "<group>"; };
-		0B1E360F1AC4202F008097C1 /* MrNotifyCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MrNotifyCenter.m; path = pipe/MrNotifyCenter.m; sourceTree = "<group>"; };
-		0B2CECEE1ABF1A3900B319D5 /* MrWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MrWork.h; path = pipe/MrWork.h; sourceTree = "<group>"; };
-		0B2CECEF1ABF1A3900B319D5 /* MrWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MrWork.m; path = pipe/MrWork.m; sourceTree = "<group>"; };
-		0B2CECF01ABF1A3900B319D5 /* NotifyBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotifyBundle.h; path = pipe/NotifyBundle.h; sourceTree = "<group>"; };
-		0B2CECF11ABF1A3900B319D5 /* NotifyBundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotifyBundle.m; path = pipe/NotifyBundle.m; sourceTree = "<group>"; };
-		0B2CECFC1ABF1E8800B319D5 /* PipeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PipeManager.h; path = pipe/PipeManager.h; sourceTree = "<group>"; };
-		0B2CECFD1ABF1E8800B319D5 /* PipeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PipeManager.m; path = pipe/PipeManager.m; sourceTree = "<group>"; };
-		0B2CED001ABF1FA400B319D5 /* Pipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pipe.h; sourceTree = "<group>"; };
-		0B2CED011ABF1FA400B319D5 /* Pipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pipe.m; sourceTree = "<group>"; };
 		0B2CED121ABFDBF400B319D5 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		0B2CED501AC3EE0400B319D5 /* NSRunLoop+blockRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSRunLoop+blockRun.h"; path = "util/NSRunLoop+blockRun.h"; sourceTree = "<group>"; };
 		0B2CED511AC3EE0400B319D5 /* NSRunLoop+blockRun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSRunLoop+blockRun.m"; path = "util/NSRunLoop+blockRun.m"; sourceTree = "<group>"; };
+		0B8399BB1AD25FE600FD361A /* MrNotifyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MrNotifyCenter.h; path = MrQueue/base/MrNotifyCenter.h; sourceTree = "<group>"; };
+		0B8399BC1AD25FE600FD361A /* MrNotifyCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MrNotifyCenter.m; path = MrQueue/base/MrNotifyCenter.m; sourceTree = "<group>"; };
+		0B8399BD1AD25FE600FD361A /* MrQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MrQueue.h; path = MrQueue/base/MrQueue.h; sourceTree = "<group>"; };
+		0B8399BE1AD25FE600FD361A /* MrQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MrQueue.m; path = MrQueue/base/MrQueue.m; sourceTree = "<group>"; };
+		0B8399BF1AD25FE600FD361A /* MrWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MrWork.h; path = MrQueue/base/MrWork.h; sourceTree = "<group>"; };
+		0B8399C01AD25FE600FD361A /* MrWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MrWork.m; path = MrQueue/base/MrWork.m; sourceTree = "<group>"; };
+		0B8399C11AD25FE600FD361A /* NotifyBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotifyBundle.h; path = MrQueue/base/NotifyBundle.h; sourceTree = "<group>"; };
+		0B8399C21AD25FE600FD361A /* NotifyBundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotifyBundle.m; path = MrQueue/base/NotifyBundle.m; sourceTree = "<group>"; };
+		0B8399CD1AD25FF300FD361A /* MainQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainQueue.h; path = MrQueue/queues/MainQueue.h; sourceTree = "<group>"; };
+		0B8399CE1AD25FF300FD361A /* MainQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainQueue.m; path = MrQueue/queues/MainQueue.m; sourceTree = "<group>"; };
+		0B8399CF1AD25FF300FD361A /* QueueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QueueManager.h; path = MrQueue/queues/QueueManager.h; sourceTree = "<group>"; };
+		0B8399D01AD25FF300FD361A /* QueueManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QueueManager.m; path = MrQueue/queues/QueueManager.m; sourceTree = "<group>"; };
+		0B8399D11AD25FF300FD361A /* SerializeQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SerializeQueue.h; path = MrQueue/queues/SerializeQueue.h; sourceTree = "<group>"; };
+		0B8399D21AD25FF300FD361A /* SerializeQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SerializeQueue.m; path = MrQueue/queues/SerializeQueue.m; sourceTree = "<group>"; };
 		E31CF3B31AB55252003CDD03 /* DataPathProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataPathProvider.h; path = data_library/DataPathProvider.h; sourceTree = "<group>"; };
 		E31CF3B41AB55252003CDD03 /* DataPathProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataPathProvider.m; path = data_library/DataPathProvider.m; sourceTree = "<group>"; };
 		E31CF3BA1AB57922003CDD03 /* Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Macro.h; path = util/Macro.h; sourceTree = "<group>"; };
@@ -167,14 +167,6 @@
 		E3466CD71AB493AB0071CE9C /* MrObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MrObject.m; path = data_struct/MrObject.m; sourceTree = "<group>"; };
 		E3466CDA1AB494900071CE9C /* DataQuerier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataQuerier.h; path = data_library/DataQuerier.h; sourceTree = "<group>"; };
 		E3466CDB1AB494900071CE9C /* DataQuerier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataQuerier.m; path = data_library/DataQuerier.m; sourceTree = "<group>"; };
-		E37D7E961ABF2517006E694F /* MainPipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPipe.h; sourceTree = "<group>"; };
-		E37D7E971ABF2517006E694F /* MainPipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPipe.m; sourceTree = "<group>"; };
-		E37D7E9A1ABF25BC006E694F /* QueuePipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QueuePipe.h; path = pipe/QueuePipe.h; sourceTree = "<group>"; };
-		E37D7E9B1ABF25BC006E694F /* QueuePipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QueuePipe.m; path = pipe/QueuePipe.m; sourceTree = "<group>"; };
-		E37D7E9E1ABF262D006E694F /* IgnorePipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IgnorePipe.h; sourceTree = "<group>"; };
-		E37D7E9F1ABF262D006E694F /* IgnorePipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IgnorePipe.m; sourceTree = "<group>"; };
-		E37D7EA21ABF2656006E694F /* ReplacePipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReplacePipe.h; path = pipe/ReplacePipe.h; sourceTree = "<group>"; };
-		E37D7EA31ABF2656006E694F /* ReplacePipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReplacePipe.m; path = pipe/ReplacePipe.m; sourceTree = "<group>"; };
 		E3A430861AB872DF00F15C60 /* BlocksKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BlocksKit.xcodeproj; path = third_party/BlocksKit/BlocksKit.xcodeproj; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -200,29 +192,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0B2CECD01ABD4F0100B319D5 /* pipe */ = {
+		0B2CECD01ABD4F0100B319D5 /* MrQueue */ = {
 			isa = PBXGroup;
 			children = (
-				E37D7E9E1ABF262D006E694F /* IgnorePipe.h */,
-				E37D7E9F1ABF262D006E694F /* IgnorePipe.m */,
-				E37D7E961ABF2517006E694F /* MainPipe.h */,
-				E37D7E971ABF2517006E694F /* MainPipe.m */,
-				0B1E360E1AC4202F008097C1 /* MrNotifyCenter.h */,
-				0B1E360F1AC4202F008097C1 /* MrNotifyCenter.m */,
-				0B2CECEE1ABF1A3900B319D5 /* MrWork.h */,
-				0B2CECEF1ABF1A3900B319D5 /* MrWork.m */,
-				0B2CECF01ABF1A3900B319D5 /* NotifyBundle.h */,
-				0B2CECF11ABF1A3900B319D5 /* NotifyBundle.m */,
-				0B2CED001ABF1FA400B319D5 /* Pipe.h */,
-				0B2CED011ABF1FA400B319D5 /* Pipe.m */,
-				0B2CECFC1ABF1E8800B319D5 /* PipeManager.h */,
-				0B2CECFD1ABF1E8800B319D5 /* PipeManager.m */,
-				E37D7E9A1ABF25BC006E694F /* QueuePipe.h */,
-				E37D7E9B1ABF25BC006E694F /* QueuePipe.m */,
-				E37D7EA21ABF2656006E694F /* ReplacePipe.h */,
-				E37D7EA31ABF2656006E694F /* ReplacePipe.m */,
+				0B8399BA1AD25F6500FD361A /* base */,
+				0B8399B91AD25F4F00FD361A /* queues */,
 			);
-			name = pipe;
+			name = MrQueue;
+			sourceTree = "<group>";
+		};
+		0B8399B91AD25F4F00FD361A /* queues */ = {
+			isa = PBXGroup;
+			children = (
+				0B8399CD1AD25FF300FD361A /* MainQueue.h */,
+				0B8399CE1AD25FF300FD361A /* MainQueue.m */,
+				0B8399CF1AD25FF300FD361A /* QueueManager.h */,
+				0B8399D01AD25FF300FD361A /* QueueManager.m */,
+				0B8399D11AD25FF300FD361A /* SerializeQueue.h */,
+				0B8399D21AD25FF300FD361A /* SerializeQueue.m */,
+			);
+			name = queues;
+			sourceTree = "<group>";
+		};
+		0B8399BA1AD25F6500FD361A /* base */ = {
+			isa = PBXGroup;
+			children = (
+				0B8399BB1AD25FE600FD361A /* MrNotifyCenter.h */,
+				0B8399BC1AD25FE600FD361A /* MrNotifyCenter.m */,
+				0B8399BD1AD25FE600FD361A /* MrQueue.h */,
+				0B8399BE1AD25FE600FD361A /* MrQueue.m */,
+				0B8399BF1AD25FE600FD361A /* MrWork.h */,
+				0B8399C01AD25FE600FD361A /* MrWork.m */,
+				0B8399C11AD25FE600FD361A /* NotifyBundle.h */,
+				0B8399C21AD25FE600FD361A /* NotifyBundle.m */,
+			);
+			name = base;
 			sourceTree = "<group>";
 		};
 		E31CF3B71AB578B4003CDD03 /* util */ = {
@@ -262,7 +266,7 @@
 				E3466C8F1AB4505F0071CE9C /* Mr.h */,
 				E3466C8D1AB4505F0071CE9C /* Supporting Files */,
 				E3466CA61AB453AF0071CE9C /* third_party */,
-				0B2CECD01ABD4F0100B319D5 /* pipe */,
+				0B2CECD01ABD4F0100B319D5 /* MrQueue */,
 				E31CF3B71AB578B4003CDD03 /* util */,
 			);
 			path = Mr;
@@ -369,26 +373,24 @@
 				E3466CBC1AB453F80071CE9C /* FMResultSet.h in Headers */,
 				E31CF3B51AB55252003CDD03 /* DataPathProvider.h in Headers */,
 				E3466CD31AB45BF60071CE9C /* DataSaver.h in Headers */,
-				E37D7EA01ABF262D006E694F /* IgnorePipe.h in Headers */,
-				E37D7EA41ABF2656006E694F /* ReplacePipe.h in Headers */,
 				0B2CED521AC3EE0400B319D5 /* NSRunLoop+blockRun.h in Headers */,
-				0B2CED021ABF1FA400B319D5 /* Pipe.h in Headers */,
-				E37D7E9C1ABF25BC006E694F /* QueuePipe.h in Headers */,
+				0B8399D71AD25FF300FD361A /* MainQueue.h in Headers */,
 				E3466CCF1AB45B900071CE9C /* DataLibrary.h in Headers */,
 				E3466CB71AB453F80071CE9C /* FMDatabasePool.h in Headers */,
-				0B2CECF61ABF1A3900B319D5 /* NotifyBundle.h in Headers */,
 				E3466CDC1AB494900071CE9C /* DataQuerier.h in Headers */,
 				0B2CED131ABFDBF400B319D5 /* PrefixHeader.pch in Headers */,
 				E3466CB31AB453F80071CE9C /* FMDatabase.h in Headers */,
 				E3466CBB1AB453F80071CE9C /* FMDB.h in Headers */,
+				0B8399C91AD25FE600FD361A /* NotifyBundle.h in Headers */,
+				0B8399D91AD25FF300FD361A /* QueueManager.h in Headers */,
 				E31CF3BB1AB57922003CDD03 /* Macro.h in Headers */,
-				0B2CECF41ABF1A3900B319D5 /* MrWork.h in Headers */,
 				E3466C901AB4505F0071CE9C /* Mr.h in Headers */,
-				0B2CECFE1ABF1E8800B319D5 /* PipeManager.h in Headers */,
-				E37D7E981ABF2517006E694F /* MainPipe.h in Headers */,
+				0B8399C51AD25FE600FD361A /* MrQueue.h in Headers */,
+				0B8399DB1AD25FF300FD361A /* SerializeQueue.h in Headers */,
+				0B8399C71AD25FE600FD361A /* MrWork.h in Headers */,
 				E3466CD81AB493AB0071CE9C /* MrObject.h in Headers */,
 				E3466CB51AB453F80071CE9C /* FMDatabaseAdditions.h in Headers */,
-				0B1E36101AC4202F008097C1 /* MrNotifyCenter.h in Headers */,
+				0B8399C31AD25FE600FD361A /* MrNotifyCenter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,26 +543,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B1E36111AC4202F008097C1 /* MrNotifyCenter.m in Sources */,
+				0B8399C41AD25FE600FD361A /* MrNotifyCenter.m in Sources */,
+				0B8399D81AD25FF300FD361A /* MainQueue.m in Sources */,
 				E3466CB41AB453F80071CE9C /* FMDatabase.m in Sources */,
-				0B2CED031ABF1FA400B319D5 /* Pipe.m in Sources */,
 				E3466CBA1AB453F80071CE9C /* FMDatabaseQueue.m in Sources */,
 				E3466CB81AB453F80071CE9C /* FMDatabasePool.m in Sources */,
+				0B8399DA1AD25FF300FD361A /* QueueManager.m in Sources */,
 				E31CF3B61AB55252003CDD03 /* DataPathProvider.m in Sources */,
 				E3466CD91AB493AB0071CE9C /* MrObject.m in Sources */,
+				0B8399CA1AD25FE600FD361A /* NotifyBundle.m in Sources */,
+				0B8399DC1AD25FF300FD361A /* SerializeQueue.m in Sources */,
 				E3466CB61AB453F80071CE9C /* FMDatabaseAdditions.m in Sources */,
-				0B2CECF71ABF1A3900B319D5 /* NotifyBundle.m in Sources */,
 				0B2CED531AC3EE0400B319D5 /* NSRunLoop+blockRun.m in Sources */,
-				E37D7EA51ABF2656006E694F /* ReplacePipe.m in Sources */,
-				E37D7EA11ABF262D006E694F /* IgnorePipe.m in Sources */,
 				E3466CBD1AB453F80071CE9C /* FMResultSet.m in Sources */,
-				E37D7E9D1ABF25BC006E694F /* QueuePipe.m in Sources */,
+				0B8399C61AD25FE600FD361A /* MrQueue.m in Sources */,
 				E3466CD41AB45BF60071CE9C /* DataSaver.m in Sources */,
-				E37D7E991ABF2517006E694F /* MainPipe.m in Sources */,
-				0B2CECF51ABF1A3900B319D5 /* MrWork.m in Sources */,
+				0B8399C81AD25FE600FD361A /* MrWork.m in Sources */,
 				E3466CD01AB45B900071CE9C /* DataLibrary.m in Sources */,
 				E3466CDD1AB494900071CE9C /* DataQuerier.m in Sources */,
-				0B2CECFF1ABF1E8800B319D5 /* PipeManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,8 +6,8 @@
 //  Copyright (c) 2015年 familymrfan. All rights reserved.
 //
 
-#import "Pipe.h"
+#import "MrQueue.h"
 
-@interface MainPipe : Pipe
+@interface MainQueue : MrQueue
 
 @end

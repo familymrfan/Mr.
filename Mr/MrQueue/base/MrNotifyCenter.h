@@ -11,6 +11,7 @@
 
 @interface MrNotifyCenter : NSObject
 
-+ (NotifyBundle *)createNotifyBundle:(NotifyBlock)notifyBlock;
++ (void)bindNotifyWithWork:(MrWork *)work notifyBlock:(NotifyBlock)notifyBlock;
++ (void)bindNotifyWithWorks:(NSArray *)work notifyBlock:(NotifyBlock)notifyBlock;
 
 @end

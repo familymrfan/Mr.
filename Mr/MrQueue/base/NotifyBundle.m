@@ -11,7 +11,6 @@
 @interface NotifyBundle ()
 
 @property (nonatomic) NSMutableArray* works;
-@property (nonatomic, assign) BOOL isStart;
 
 @end
 
@@ -28,9 +27,10 @@
 
 - (void)bindWork:(MrWork *)work
 {
-    NSAssert(self.isStart == NO, @"bind is started ! you can not bind work");
-    NSAssert(!work.isExecute && !work.isFinish, @"the work should not execute if you want bind notify !");
-    [self.works addObject:work];
+    if (!work.isFinish) {
+        [self.works addObject:work];
+        [work addObserver:self forKeyPath:@"isFinish" options:NSKeyValueObservingOptionNew context:nil];
+    }
 }
 
 - (MrWork* )bindWorkBlock:(WorkBlock)block
@@ -40,26 +40,14 @@
     return work;
 }
 
-- (MrWork *)bindWaitFinishWorkBlock:(WaitFinishWorkBlock)block
+- (NSArray *)getWorks
 {
-    MrWork* work = [[MrWork alloc] initWithWaitFinishWorkBlock:block];
-    [self bindWork:work];
-    return work;
-}
-
-- (void)start
-{
-    self.isStart = YES;
-    [self.works enumerateObjectsUsingBlock:^(MrWork* work, NSUInteger idx, BOOL *stop) {
-        [work addObserver:self forKeyPath:@"isFinish" options:NSKeyValueObservingOptionNew context:nil];
-    }];
+    return self.works;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(MrWork *)object change:(NSDictionary *)change context:(void *)context
 {
     if ([keyPath isEqual:@"isFinish"]) {
-        NSLog(@"object %@ change %@", object, change);
-        
         if ([object isFinish]) {
             [self.works removeObject:object];
             [object removeObserver:self forKeyPath:@"isFinish"];

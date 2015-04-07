@@ -6,17 +6,18 @@
 //  Copyright (c) 2015年 familymrfan. All rights reserved.
 //
 
-#import "MainPipe.h"
+#import "MainQueue.h"
 #import "BlocksKit/BlocksKit.h"
 
-@implementation MainPipe
+@implementation MainQueue
 
--(void)doWorks
+-(void)run
 {
-    [[self getWorks] bk_each:^(MrWork* work) {
+    [[self getWorks] enumerateObjectsUsingBlock:^(MrWork* work, NSUInteger idx, BOOL *stop) {
         if (!work.isExecute && !work.isFinish) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [work doit];
+                id result = [self preWorkResult:idx];
+                [work run:result];
             });
         }
     }];

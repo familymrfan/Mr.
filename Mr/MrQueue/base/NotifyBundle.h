@@ -17,8 +17,6 @@ typedef void(^NotifyBlock)();
 
 - (void)bindWork:(MrWork *)work;
 - (MrWork *)bindWorkBlock:(WorkBlock)block;
-- (MrWork *)bindWaitFinishWorkBlock:(WaitFinishWorkBlock)block;
-
-- (void)start;
+- (NSArray *)getWorks;
 
 @end

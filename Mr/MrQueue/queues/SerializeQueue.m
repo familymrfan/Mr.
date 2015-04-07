@@ -6,10 +6,9 @@
 //  Copyright (c) 2015年 familymrfan. All rights reserved.
 //
 
-#import "QueuePipe.h"
-#import "PipeManager.h"
+#import "SerializeQueue.h"
 
-@implementation QueuePipe
+@implementation SerializeQueue
 
 - (instancetype)init
 {
@@ -20,12 +19,14 @@
     return self;
 }
 
--(void)doWorks
+-(void)run
 {
-    [[self getWorks] bk_each:^(MrWork* work) {
+    [[self getWorks] enumerateObjectsUsingBlock:^(MrWork* work, NSUInteger idx, BOOL *stop) {
         if (!work.isExecute && !work.isFinish) {
             dispatch_async(self.queue, ^{
-                [work doit];
+                NSUInteger idx = [[self getWorks] indexOfObject:work];
+                id result = [self preWorkResult:idx];
+                [work run:result];
             });
         }
     }];
