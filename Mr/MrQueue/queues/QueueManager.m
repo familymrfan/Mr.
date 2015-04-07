@@ -42,10 +42,25 @@
     SHARED_OBJECT(MainQueue);
 }
 
++ (MainQueue *)mainQueue:(id)initResult
+{
+    static MainQueue* once = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        once = [[MainQueue alloc] initWithInitResult:initResult];
+    });
+    return once;
+}
+
 // 创建
 + (SerializeQueue *)createSerializeQueue
 {
     return [SerializeQueue new];
+}
+
++ (SerializeQueue *)createSerializeQueue:(id)initResult
+{
+    return [[SerializeQueue alloc] initWithInitResult:initResult];
 }
 
 @end

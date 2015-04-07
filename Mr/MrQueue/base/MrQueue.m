@@ -14,15 +14,17 @@
 @property (nonatomic) NSMutableArray* works;
 @property (nonatomic) NSMutableArray* suspendWorks;
 @property (nonatomic) BOOL isSuspend;
+@property (nonatomic) id initResult;
 
 @end
 
 @implementation MrQueue
 
-- (instancetype)init
+- (instancetype)initWithInitResult:(id)initResult
 {
     self = [super init];
     if (self) {
+        self.initResult = initResult;
         self.works = [NSMutableArray array];
         self.suspendWorks = [NSMutableArray array];
     }
@@ -75,13 +77,26 @@
     return [self.works arrayByAddingObjectsFromArray:self.suspendWorks];
 }
 
-- (id)preWorkResult:(NSInteger)index
+- (id)preWork:(MrWork *)work
 {
+    NSInteger index = [[self getWorks] indexOfObject:work];
     if (index - 1 < 0 || index - 1 >= [self getWorks].count) {
         return nil;
     }
-    MrWork* work = [[self getWorks] objectAtIndex:index-1];
-    return work.finishResult;
+    MrWork* preWork = [[self getWorks] objectAtIndex:index-1];
+    return preWork;
+}
+
+- (id)preWorkResult:(MrWork *)work
+{
+    id result;
+    id preWork = [self preWork:work];
+    if (preWork == nil) {
+        result = [self getInitResult];
+    } else {
+        result = [preWork finishResult];
+    }
+    return result;
 }
 
 - (void)run
@@ -96,6 +111,11 @@
         dispatch_semaphore_signal(semaphore);
     }];
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+}
+
+- (id)getInitResult
+{
+    return self.initResult;
 }
 
 @end

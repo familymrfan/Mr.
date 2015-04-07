@@ -11,7 +11,7 @@
 
 @interface MrQueue : NSObject
 
-@property (nonatomic) dispatch_queue_t queue;
+- (instancetype)initWithInitResult:(id)initResult;
 
 // 任务入队
 - (void)enqueueWork:(MrWork *)work;
@@ -26,12 +26,19 @@
 // 获取所有队列中的任务
 - (NSArray *)getWorks;
 
-- (id)preWorkResult:(NSInteger)index;
+// 排在之前的工作
+- (id)preWork:(MrWork* )work;
+
+// 之前工作的产出结果
+- (id)preWorkResult:(MrWork *)work;
 
 // 运作执行单元
 - (void)run;
 
 // 等待完成
 - (void)wait;
+
+// 返回初始值
+- (id)getInitResult;
 
 @end

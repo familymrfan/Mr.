@@ -145,11 +145,12 @@
 // queue难道不会在出域的时候释放么，请相信你的眼睛
 - (void)stackQueue:(NSMutableDictionary *)change
 {
-    SerializeQueue* queue = [QueueManager createSerializeQueue];
+    SerializeQueue* queue = [QueueManager createSerializeQueue:@"green"];
     
     // 传递性
     [queue enqueueWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
-        [change setObject:@"green" forKey:@"color"];
+        XCTAssertTrue([result isEqualToString:@"green"]);
+        [change setObject:result forKey:@"color"];
         finishBlock(@"yellow");
     }];
     
@@ -172,12 +173,12 @@
 // queue 会同步等待所有任务完成
 - (void)waitQueue:(NSMutableDictionary *)change
 {
-    SerializeQueue* queue = [QueueManager createSerializeQueue];
+    SerializeQueue* queue = [QueueManager createSerializeQueue:@"green"];
     
     // 传递性
     [queue enqueueWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
         [[NSRunLoop currentRunLoop] blockRun:2];
-        [change setObject:@"green" forKey:@"color"];
+        [change setObject:result forKey:@"color"];
         finishBlock(@"yellow");
     }];
     
@@ -205,12 +206,12 @@
 // 被挂起的queue，我是否可以先去吃饭，然后再工作，是的，这是我们对你的福利
 - (void)suspendQueue:(NSMutableDictionary *)change
 {
-    SerializeQueue* queue = [QueueManager createSerializeQueue];
+    SerializeQueue* queue = [QueueManager createSerializeQueue:@"green"];
     
     // 传递性
     [queue enqueueWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
         [[NSRunLoop currentRunLoop] blockRun:2];
-        [change setObject:@"green" forKey:@"color"];
+        [change setObject:result forKey:@"color"];
         finishBlock(@"yellow");
     }];
     
@@ -309,15 +310,15 @@
         finishBlock(nil);
     }];
     
-    [MrNotifyCenter bindNotifyWithWorks:@[work1, work2, work3] notifyBlock:^{
-        XCTAssertEqual(j, 3);
-    }];
-    
     [QueueManager asyncDoWorkBlock:^(id result, BOOL isCancel, finishWorkBlock finishBlock) {
         [work1 run];
         [work2 run];
         [work3 run];
         finishBlock(nil);
+    }];
+    
+    [MrNotifyCenter bindNotifyWithWorks:@[work1, work2, work3] notifyBlock:^{
+        XCTAssertEqual(j, 3);
     }];
     
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:10.0]];

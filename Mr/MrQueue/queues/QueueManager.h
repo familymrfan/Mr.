@@ -21,8 +21,10 @@
 
 // 获取main Queue只有一个
 + (MainQueue *)mainQueue;
++ (MainQueue *)mainQueue:(id)initResult;
 
 // 创建
 + (SerializeQueue *)createSerializeQueue;
++ (SerializeQueue *)createSerializeQueue:(id)initResult;
 
 @end

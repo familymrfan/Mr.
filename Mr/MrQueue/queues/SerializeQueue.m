@@ -8,25 +8,23 @@
 
 #import "SerializeQueue.h"
 
-@implementation SerializeQueue
+@interface SerializeQueue ()
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.queue = dispatch_queue_create(NULL, DISPATCH_QUEUE_SERIAL);
-    }
-    return self;
-}
+@property (nonatomic) dispatch_queue_t queue;
+
+@end
+
+@implementation SerializeQueue
 
 -(void)run
 {
+    if (self.queue == nil) {
+        self.queue = dispatch_queue_create(NULL, DISPATCH_QUEUE_SERIAL);
+    }
     [[self getWorks] enumerateObjectsUsingBlock:^(MrWork* work, NSUInteger idx, BOOL *stop) {
         if (!work.isExecute && !work.isFinish) {
             dispatch_async(self.queue, ^{
-                NSUInteger idx = [[self getWorks] indexOfObject:work];
-                id result = [self preWorkResult:idx];
-                [work run:result];
+                [work run:[self preWorkResult:work]];
             });
         }
     }];
