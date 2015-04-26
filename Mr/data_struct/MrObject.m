@@ -62,4 +62,9 @@
     return [NSKeyedUnarchiver unarchiveObjectWithData:[NSKeyedArchiver archivedDataWithRootObject:self]];
 }
 
+-(NSString *)description
+{
+    return [NSString stringWithFormat:@"%@ %@", self.class, self.keyname2Value];
+}
+
 @end
