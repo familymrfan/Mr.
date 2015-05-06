@@ -54,7 +54,7 @@
 {
     self.isSuspend = YES;
     [self.works enumerateObjectsUsingBlock:^(MrWork* obj, NSUInteger idx, BOOL *stop) {
-        if (obj.isFinish) {
+        if (!obj.isExecute && !obj.isFinish) {
             [self suspendWork:obj];
         }
     }];
