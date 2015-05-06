@@ -7,6 +7,7 @@
 //
 
 #import "DataQuerier.h"
+#import "DataLibrary.h"
 #import "MrObject.h"
 
 @interface DataQuerier ()
@@ -24,27 +25,29 @@
 
 - (NSArray *)query:(Class)class otherCondition:(NSString *)condition withParam:(NSArray*)param
 {
-    NSString* sql = [NSString stringWithFormat:@"SELECT * FROM %@", class];
-    if (condition != nil || param != nil) {
-        sql = [sql stringByAppendingFormat:@" %@", condition];;
-    }
-    FMResultSet* queryResult = [self.database executeQuery:sql withArgumentsInArray:param];
-    if (queryResult == nil) {
-        NSLog(@"query %@ failed, error is %@, sql is %@", class, self.database.lastError, sql);
-    }
-    NSMutableArray* objects = [NSMutableArray array];
-    while (queryResult.next) {
-        id object = [[class alloc] init];
-        NSAssert([object isKindOfClass:[MrObject class]], @"query class must kind of MrObject");
-        [[object keyNames] enumerateObjectsUsingBlock:^(NSString* keyname, NSUInteger idx, BOOL *stop) {
-            id value = [queryResult objectForColumnName:keyname];
-            if ([[object keyname2Class] objectForKey:keyname] == [NSDate class]) {
-                value = [NSDate dateWithTimeIntervalSince1970:[value integerValue]];
-            }
-            [object setValue:value forKey:keyname];
-        }];
-        [objects addObject:object];
-    }
+    __block NSMutableArray* objects = [NSMutableArray array];
+    [DataLibrary runInLock:class block:^{
+        NSString* sql = [NSString stringWithFormat:@"SELECT * FROM %@", class];
+        if (condition != nil || param != nil) {
+            sql = [sql stringByAppendingFormat:@" %@", condition];;
+        }
+        FMResultSet* queryResult = [self.database executeQuery:sql withArgumentsInArray:param];
+        if (queryResult == nil) {
+            NSLog(@"query %@ failed, error is %@, sql is %@", class, self.database.lastError, sql);
+        }
+        while (queryResult.next) {
+            id object = [[class alloc] init];
+            NSAssert([object isKindOfClass:[MrObject class]], @"query class must kind of MrObject");
+            [[object keyNames] enumerateObjectsUsingBlock:^(NSString* keyname, NSUInteger idx, BOOL *stop) {
+                id value = [queryResult objectForColumnName:keyname];
+                if ([[object keyname2Class] objectForKey:keyname] == [NSDate class]) {
+                    value = [NSDate dateWithTimeIntervalSince1970:[value integerValue]];
+                }
+                [object setValue:value forKey:keyname];
+            }];
+            [objects addObject:object];
+        }
+    }];
     return objects;
 }
 

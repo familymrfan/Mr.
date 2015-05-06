@@ -7,11 +7,12 @@
 //
 
 #import "DataSaver.h"
+#import "DataLibrary.h"
 
 @interface DataSaver ()
 
 @property (nonatomic) FMDatabase* database;
-@property (nonatomic) NSDictionary* tbName2DbLock;
+
 @property (nonatomic) NSDictionary* fieldTypeMap;
 
 @end
@@ -22,7 +23,6 @@
 {
     self = [super init];
     if (self) {
-        self.tbName2DbLock = [NSMutableDictionary dictionary];
         self.fieldTypeMap = @{@"NSString":@"TEXT", @"NSNumber":@"INTEGER", @"NSData":@"BLOB", @"NSDate":@"TEXT"};
     }
     return self;
@@ -32,45 +32,34 @@
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        NSLock* lock = [[NSLock alloc] init];
-        [self.tbName2DbLock setValue:lock forKey:NSStringFromClass(object.class)];
-        __block NSMutableString* sql = [NSMutableString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@(", NSStringFromClass(object.class)];
-        NSString* feild = [NSString stringWithFormat:@"%@ %@,", @"rowId", @"INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL"];
-        [sql appendString:feild];
-        [[object keyname2Class] enumerateKeysAndObjectsUsingBlock:^(NSString* keyname, Class class, BOOL *stop) {
-            NSString* fieldType = [self.fieldTypeMap objectForKey:NSStringFromClass(class)];
-            NSAssert(fieldType, @"fieldType %@ is not support", class);
-            if (fieldType) {
-                NSString* feild = [NSString stringWithFormat:@"%@ %@,", keyname, fieldType];
-                [sql appendString:feild];
+        [DataLibrary runInLock:object.class block:^{
+            __block NSMutableString* sql = [NSMutableString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@(", NSStringFromClass(object.class)];
+            NSString* feild = [NSString stringWithFormat:@"%@ %@,", @"rowId", @"INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL"];
+            [sql appendString:feild];
+            [[object keyname2Class] enumerateKeysAndObjectsUsingBlock:^(NSString* keyname, Class class, BOOL *stop) {
+                NSString* fieldType = [self.fieldTypeMap objectForKey:NSStringFromClass(class)];
+                NSAssert(fieldType, @"fieldType %@ is not support", class);
+                if (fieldType) {
+                    NSString* feild = [NSString stringWithFormat:@"%@ %@,", keyname, fieldType];
+                    [sql appendString:feild];
+                }
+            }];
+            [sql deleteCharactersInRange:NSMakeRange(sql.length-1, 1)];
+            [sql appendString:@")"];
+            BOOL success = [self.database executeUpdate:sql];
+            NSError *error = [self.database lastError];
+            if (!success) {
+                NSLog(@"create table %@ failed, error is %@, sql is %@", NSStringFromClass(object.class), error, sql);
             }
         }];
-        [sql deleteCharactersInRange:NSMakeRange(sql.length-1, 1)];
-        [sql appendString:@")"];
-        BOOL success = [self.database executeUpdate:sql];
-        NSError *error = [self.database lastError];
-        if (!success) {
-            NSLog(@"create table %@ failed, error is %@, sql is %@", NSStringFromClass(object.class), error, sql);
-        }
     });
-}
-
-- (void)runInLock:(Class)class block:(void(^)())block
-{
-    NSLock* lock = [self.tbName2DbLock objectForKey:NSStringFromClass(class)];
-    assert(lock);
-    [lock lock];
-    if (block) {
-        block();
-    }
-    [lock unlock];
 }
 
 - (void)save:(MrObject *)object
 {
     [self createTableIfNeed:object];
     
-    [self runInLock:object.class block:^{
+    [DataLibrary runInLock:object.class block:^{
         NSMutableArray* marks = [NSMutableArray arrayWithCapacity:object.keyNames.count];
         for (NSInteger i=0; i<object.keyNames.count; i++) {
             [marks addObject:@"?"];
@@ -106,7 +95,7 @@
 
 - (void)remove:(Class)class rowId:(NSNumber *)rowId
 {
-    [self runInLock:class block:^{
+    [DataLibrary runInLock:class block:^{
         NSString* sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE rowId = %@", class, rowId];
         BOOL success = [self.database executeUpdate:sql];
         NSError *error = [self.database lastError];

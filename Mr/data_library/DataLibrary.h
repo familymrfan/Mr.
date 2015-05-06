@@ -17,5 +17,6 @@
 + (DataSaver *)saver;
 + (DataQuerier *)querier;
 + (DataPathProvider *)pathProvider;
++ (void)runInLock:(Class)class block:(void(^)())block;
 
 @end

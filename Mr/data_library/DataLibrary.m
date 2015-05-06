@@ -13,6 +13,7 @@
 @interface DataLibrary ()
 
 @property (nonatomic) FMDatabase* database;
+@property (nonatomic) NSDictionary* tbName2DbLock;
 
 @end
 
@@ -36,6 +37,7 @@
         } else {
             self.database = dataBase;
         }
+        self.tbName2DbLock = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -65,6 +67,27 @@
 + (DataPathProvider *)pathProvider
 {
     SHARED_OBJECT(DataPathProvider);
+}
+
++ (void)runInLock:(Class)class block:(void(^)())block
+{
+    DataLibrary* dataLibrary = [DataLibrary sharedInstace];
+    NSLock* lock = [dataLibrary.tbName2DbLock objectForKey:NSStringFromClass(class)];
+    if (lock == nil) {
+        NSLock* lock = [[NSLock alloc] init];
+        [lock lock];
+        [dataLibrary.tbName2DbLock setValue:lock forKey:NSStringFromClass(class)];
+        if (block) {
+            block();
+        }
+        [lock unlock];
+        return ;
+    }
+    [lock lock];
+    if (block) {
+        block();
+    }
+    [lock unlock];
 }
 
 @end
