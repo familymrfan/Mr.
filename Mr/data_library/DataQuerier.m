@@ -38,6 +38,8 @@
         while (queryResult.next) {
             id object = [[class alloc] init];
             NSAssert([object isKindOfClass:[MrObject class]], @"query class must kind of MrObject");
+            id value = [queryResult objectForColumnName:@"rowId"];
+            [object setValue:value forKey:@"rowId"];
             [[object keyNames] enumerateObjectsUsingBlock:^(NSString* keyname, NSUInteger idx, BOOL *stop) {
                 id value = [queryResult objectForColumnName:keyname];
                 if ([[object keyname2Class] objectForKey:keyname] == [NSDate class]) {
