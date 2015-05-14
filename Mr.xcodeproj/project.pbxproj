@@ -51,7 +51,6 @@
 		E3466CDC1AB494900071CE9C /* DataQuerier.h in Headers */ = {isa = PBXBuildFile; fileRef = E3466CDA1AB494900071CE9C /* DataQuerier.h */; };
 		E3466CDD1AB494900071CE9C /* DataQuerier.m in Sources */ = {isa = PBXBuildFile; fileRef = E3466CDB1AB494900071CE9C /* DataQuerier.m */; };
 		E3A430A61AB8771E00F15C60 /* libBlocksKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3A430901AB872DF00F15C60 /* libBlocksKit.a */; };
-		E3A430A81AB877EA00F15C60 /* libBlocksKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3A430901AB872DF00F15C60 /* libBlocksKit.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,7 +174,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3A430A81AB877EA00F15C60 /* libBlocksKit.a in Frameworks */,
 				E3466CBF1AB454430071CE9C /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

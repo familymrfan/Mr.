@@ -7,7 +7,6 @@
 //
 
 #import "MainQueue.h"
-#import "BlocksKit/BlocksKit.h"
 
 @implementation MainQueue
 
