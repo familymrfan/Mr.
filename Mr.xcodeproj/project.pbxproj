@@ -50,6 +50,7 @@
 		E3466CD91AB493AB0071CE9C /* MrObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E3466CD71AB493AB0071CE9C /* MrObject.m */; };
 		E3466CDC1AB494900071CE9C /* DataQuerier.h in Headers */ = {isa = PBXBuildFile; fileRef = E3466CDA1AB494900071CE9C /* DataQuerier.h */; };
 		E3466CDD1AB494900071CE9C /* DataQuerier.m in Sources */ = {isa = PBXBuildFile; fileRef = E3466CDB1AB494900071CE9C /* DataQuerier.m */; };
+		E3A381891B0A1D88008B69B3 /* FBKVOController in Resources */ = {isa = PBXBuildFile; fileRef = E3A381881B0A1D88008B69B3 /* FBKVOController */; };
 		E3A430A61AB8771E00F15C60 /* libBlocksKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3A430901AB872DF00F15C60 /* libBlocksKit.a */; };
 /* End PBXBuildFile section */
 
@@ -166,6 +167,7 @@
 		E3466CD71AB493AB0071CE9C /* MrObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MrObject.m; path = data_struct/MrObject.m; sourceTree = "<group>"; };
 		E3466CDA1AB494900071CE9C /* DataQuerier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataQuerier.h; path = data_library/DataQuerier.h; sourceTree = "<group>"; };
 		E3466CDB1AB494900071CE9C /* DataQuerier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataQuerier.m; path = data_library/DataQuerier.m; sourceTree = "<group>"; };
+		E3A381881B0A1D88008B69B3 /* FBKVOController */ = {isa = PBXFileReference; lastKnownFileType = folder; name = FBKVOController; path = third_party/KVOController/FBKVOController; sourceTree = SOURCE_ROOT; };
 		E3A430861AB872DF00F15C60 /* BlocksKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BlocksKit.xcodeproj; path = third_party/BlocksKit/BlocksKit.xcodeproj; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -230,6 +232,7 @@
 		E31CF3B71AB578B4003CDD03 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				E3A381881B0A1D88008B69B3 /* FBKVOController */,
 				0B2CED501AC3EE0400B319D5 /* NSRunLoop+blockRun.h */,
 				0B2CED511AC3EE0400B319D5 /* NSRunLoop+blockRun.m */,
 				E31CF3BA1AB57922003CDD03 /* Macro.h */,
@@ -524,6 +527,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3A381891B0A1D88008B69B3 /* FBKVOController in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
