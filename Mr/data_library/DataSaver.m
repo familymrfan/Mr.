@@ -61,7 +61,7 @@
     
     [DataLibrary runInLock:object.class block:^{
         NSMutableArray* marks = [NSMutableArray arrayWithCapacity:object.keyNames.count];
-        for (NSInteger i=0; i<object.keyNames.count; i++) {
+        for (NSInteger i=0; i<object.keyname2Value.allKeys.count; i++) {
             [marks addObject:@"?"];
         }
         NSString* sql = nil;
