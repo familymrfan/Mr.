@@ -51,7 +51,6 @@
 		E3466CDC1AB494900071CE9C /* DataQuerier.h in Headers */ = {isa = PBXBuildFile; fileRef = E3466CDA1AB494900071CE9C /* DataQuerier.h */; };
 		E3466CDD1AB494900071CE9C /* DataQuerier.m in Sources */ = {isa = PBXBuildFile; fileRef = E3466CDB1AB494900071CE9C /* DataQuerier.m */; };
 		E3A381891B0A1D88008B69B3 /* FBKVOController in Resources */ = {isa = PBXBuildFile; fileRef = E3A381881B0A1D88008B69B3 /* FBKVOController */; };
-		E3A430A61AB8771E00F15C60 /* libBlocksKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3A430901AB872DF00F15C60 /* libBlocksKit.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,62 +60,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = E3466C891AB4505F0071CE9C;
 			remoteInfo = Mr;
-		};
-		E3A4308F1AB872DF00F15C60 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E3A430861AB872DF00F15C60 /* BlocksKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DBFB08AE184DC23000F37EEE;
-			remoteInfo = "BlocksKit iOS";
-		};
-		E3A430911AB872DF00F15C60 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E3A430861AB872DF00F15C60 /* BlocksKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DBFB08BE184DC23000F37EEE;
-			remoteInfo = "BlocksKit iOS Tests";
-		};
-		E3A430931AB872DF00F15C60 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E3A430861AB872DF00F15C60 /* BlocksKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DBFB092C184DC36400F37EEE;
-			remoteInfo = "BlocksKit Mac";
-		};
-		E3A430951AB872DF00F15C60 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E3A430861AB872DF00F15C60 /* BlocksKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DBFB0941184DC36400F37EEE;
-			remoteInfo = "BlocksKit Mac Tests";
-		};
-		E3A430971AB872DF00F15C60 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E3A430861AB872DF00F15C60 /* BlocksKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DBFB0A87184DCBCC00F37EEE;
-			remoteInfo = "Mac Demo";
-		};
-		E3A430991AB872DF00F15C60 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E3A430861AB872DF00F15C60 /* BlocksKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DB5BF87F185E909300FF2A0B;
-			remoteInfo = "BlocksKit iOS Tests Runner";
-		};
-		E3A4309B1AB872FC00F15C60 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E3A430861AB872DF00F15C60 /* BlocksKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = DBFB08AD184DC23000F37EEE;
-			remoteInfo = "BlocksKit iOS";
-		};
-		E3A430A41AB8771800F15C60 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E3A430861AB872DF00F15C60 /* BlocksKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = DBFB08AD184DC23000F37EEE;
-			remoteInfo = "BlocksKit iOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -168,7 +111,6 @@
 		E3466CDA1AB494900071CE9C /* DataQuerier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataQuerier.h; path = data_library/DataQuerier.h; sourceTree = "<group>"; };
 		E3466CDB1AB494900071CE9C /* DataQuerier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataQuerier.m; path = data_library/DataQuerier.m; sourceTree = "<group>"; };
 		E3A381881B0A1D88008B69B3 /* FBKVOController */ = {isa = PBXFileReference; lastKnownFileType = folder; name = FBKVOController; path = third_party/KVOController/FBKVOController; sourceTree = SOURCE_ROOT; };
-		E3A430861AB872DF00F15C60 /* BlocksKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BlocksKit.xcodeproj; path = third_party/BlocksKit/BlocksKit.xcodeproj; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,7 +126,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3A430A61AB8771E00F15C60 /* libBlocksKit.a in Frameworks */,
 				E3466C961AB4505F0071CE9C /* Mr.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,7 +243,6 @@
 		E3466CA61AB453AF0071CE9C /* third_party */ = {
 			isa = PBXGroup;
 			children = (
-				E3A430861AB872DF00F15C60 /* BlocksKit.xcodeproj */,
 				E3466CA71AB453E20071CE9C /* FMDB */,
 			);
 			name = third_party;
@@ -348,19 +288,6 @@
 				E3466CD71AB493AB0071CE9C /* MrObject.m */,
 			);
 			name = data_struct;
-			sourceTree = "<group>";
-		};
-		E3A430871AB872DF00F15C60 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E3A430901AB872DF00F15C60 /* libBlocksKit.a */,
-				E3A430921AB872DF00F15C60 /* BlocksKit-iOS-Tests.xctest */,
-				E3A430941AB872DF00F15C60 /* BlocksKit.framework */,
-				E3A430961AB872DF00F15C60 /* BlocksKit-Mac-Tests.xctest */,
-				E3A430981AB872DF00F15C60 /* BlocksKit Mac Demo.app */,
-				E3A4309A1AB872DF00F15C60 /* BK Tests.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -410,7 +337,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				E3A4309C1AB872FC00F15C60 /* PBXTargetDependency */,
 			);
 			name = Mr;
 			productName = Mr;
@@ -428,7 +354,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				E3A430A51AB8771800F15C60 /* PBXTargetDependency */,
 				E3466C981AB4505F0071CE9C /* PBXTargetDependency */,
 			);
 			name = MrTests;
@@ -463,12 +388,6 @@
 			mainGroup = E3466C801AB4505F0071CE9C;
 			productRefGroup = E3466C8B1AB4505F0071CE9C /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = E3A430871AB872DF00F15C60 /* Products */;
-					ProjectRef = E3A430861AB872DF00F15C60 /* BlocksKit.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				E3466C891AB4505F0071CE9C /* Mr */,
@@ -476,51 +395,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		E3A430901AB872DF00F15C60 /* libBlocksKit.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libBlocksKit.a;
-			remoteRef = E3A4308F1AB872DF00F15C60 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E3A430921AB872DF00F15C60 /* BlocksKit-iOS-Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "BlocksKit-iOS-Tests.xctest";
-			remoteRef = E3A430911AB872DF00F15C60 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E3A430941AB872DF00F15C60 /* BlocksKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = BlocksKit.framework;
-			remoteRef = E3A430931AB872DF00F15C60 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E3A430961AB872DF00F15C60 /* BlocksKit-Mac-Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "BlocksKit-Mac-Tests.xctest";
-			remoteRef = E3A430951AB872DF00F15C60 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E3A430981AB872DF00F15C60 /* BlocksKit Mac Demo.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "BlocksKit Mac Demo.app";
-			remoteRef = E3A430971AB872DF00F15C60 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E3A4309A1AB872DF00F15C60 /* BK Tests.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "BK Tests.app";
-			remoteRef = E3A430991AB872DF00F15C60 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		E3466C881AB4505F0071CE9C /* Resources */ = {
@@ -581,16 +455,6 @@
 			isa = PBXTargetDependency;
 			target = E3466C891AB4505F0071CE9C /* Mr */;
 			targetProxy = E3466C971AB4505F0071CE9C /* PBXContainerItemProxy */;
-		};
-		E3A4309C1AB872FC00F15C60 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "BlocksKit iOS";
-			targetProxy = E3A4309B1AB872FC00F15C60 /* PBXContainerItemProxy */;
-		};
-		E3A430A51AB8771800F15C60 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "BlocksKit iOS";
-			targetProxy = E3A430A41AB8771800F15C60 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
