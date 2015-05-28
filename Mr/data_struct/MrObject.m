@@ -57,6 +57,39 @@
     return propname2Class;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super init];
+    if (self != nil) {
+        for (NSString* propertyName in [[self keyNames] arrayByAddingObject:@"rowId"]) {
+            if ([propertyName isEqualToString:@"superclass"]
+                || [propertyName isEqualToString:@"hash"]
+                || [propertyName isEqualToString:@"description"]
+                || [propertyName isEqualToString:@"debugDescription"]) {
+                continue;
+            }
+            id value = [aDecoder decodeObjectForKey:propertyName];
+            [self setValue:value forKey:propertyName];
+        }
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    for (NSString* propertyName in [[self keyNames] arrayByAddingObject:@"rowId"]) {
+        if ([propertyName isEqualToString:@"superclass"]
+            || [propertyName isEqualToString:@"hash"]
+            || [propertyName isEqualToString:@"description"]
+            || [propertyName isEqualToString:@"debugDescription"]) {
+            continue;
+        }
+        
+        id value = [self valueForKey:propertyName];
+        [aCoder encodeObject:value forKey:propertyName];
+    }
+}
+
 - (instancetype)deepCopy
 {
     return [NSKeyedUnarchiver unarchiveObjectWithData:[NSKeyedArchiver archivedDataWithRootObject:self]];
