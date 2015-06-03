@@ -45,7 +45,9 @@
                 if ([[object keyname2Class] objectForKey:keyname] == [NSDate class]) {
                     value = [NSDate dateWithTimeIntervalSince1970:[value integerValue]];
                 }
-                [object setValue:value forKey:keyname];
+                if (value != [NSNull null]) {
+                    [object setValue:value forKey:keyname];
+                }
             }];
             [objects addObject:object];
         }
